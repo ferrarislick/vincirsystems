@@ -351,6 +351,33 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
   .footer-top{grid-template-columns:1fr}
   .hero-actions{flex-direction:column}
 }
+
+/* ===== EXIT INTENT POPUP ===== */
+.vs-exit-overlay{position:fixed;inset:0;background:rgba(5,11,20,0.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
+.vs-exit-overlay.show{display:flex}
+.vs-exit-card{width:min(560px,94vw);background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,0.55)}
+.vs-exit-head{background:linear-gradient(180deg,#07101c,#050b14);padding:18px 20px;color:#fff}
+.vs-exit-title{font-weight:900;letter-spacing:-0.02em;font-size:1.15rem;line-height:1.3}
+.vs-exit-sub{margin-top:6px;color:rgba(255,255,255,0.82);font-size:0.92rem;line-height:1.55}
+.vs-exit-body{padding:18px 20px 16px}
+.vs-form-grid{display:grid;gap:12px}
+.vs-field label{display:block;font-size:0.78rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#07101c;margin-bottom:6px}
+.vs-field input,.vs-field select{width:100%;border:1px solid rgba(7,16,28,0.18);border-radius:12px;padding:12px 12px;font-size:0.95rem;outline:none;transition:border-color 0.15s, box-shadow 0.15s}
+.vs-field input:focus,.vs-field select:focus{border-color:rgba(28,99,255,0.55);box-shadow:0 0 0 4px rgba(28,99,255,0.12)}
+.vs-phone-wrap{display:flex;gap:10px;align-items:stretch}
+.vs-flag{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid rgba(7,16,28,0.18);border-radius:12px;background:#f6f8fb;color:#07101c;font-weight:700}
+.vs-flag span{font-size:1.05rem}
+.vs-terms{display:flex;gap:10px;align-items:flex-start;margin-top:6px}
+.vs-terms input{margin-top:3px}
+.vs-terms label{font-size:0.86rem;line-height:1.5;color:#07101c}
+.vs-submit{margin-top:10px;display:flex;flex-direction:column;gap:10px}
+.vs-submit button{width:100%;border:none;border-radius:14px;padding:13px 14px;font-weight:900;font-size:1rem;cursor:pointer;background:linear-gradient(90deg,#00e676,#31c84f);color:#04140b;box-shadow:0 14px 30px rgba(0,230,118,0.22);transition:transform 0.15s, box-shadow 0.15s}
+.vs-submit button:hover{transform:translateY(-1px);box-shadow:0 18px 36px rgba(0,230,118,0.28)}
+.vs-nothanks{display:block;text-align:center;font-size:0.9rem;color:#1c63ff;text-decoration:none}
+.vs-nothanks:hover{text-decoration:underline}
+.vs-thanks{padding:22px 20px 20px;color:#07101c}
+.vs-thanks h3{font-size:1.25rem;letter-spacing:-0.02em;margin:0 0 8px;font-weight:900}
+.vs-thanks p{margin:0;color:rgba(7,16,28,0.78);line-height:1.65}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -401,7 +428,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#testimonials">Results</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a class="btn btn-primary" href="#cta">Get Free Revenue Audit</a></li>
+        <li><a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Get Free Revenue Audit</a></li>
       </ul>
     </nav>
   </div>
@@ -417,8 +444,8 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
       <p class="hero-lead">You are not losing jobs because of your prices or your skills. You are losing them because calls go to voicemail, web leads wait hours for a reply, and follow-ups never happen. Vincir Systems is the AI-powered backbone that plugs every leak and turns missed chances into booked installations.</p>
       <p class="hero-micro">Every unanswered call could be a <span>$10,000–$50,000</span> project walking to your competitor.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#cta">Get Started — Book a Free Audit</a>
-        <a class="btn btn-ghost" href="#foundation">See How It Works ↓</a>
+        <a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Get Started — Book a Free Audit</a>
+        <a class="btn btn-ghost" href="#" onclick="showExitPopup(); return false;">See How It Works ↓</a>
       </div>
     </div>
     <div>
@@ -505,7 +532,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
     </div>
     <div class="problem-cta reveal">
       <p>Plug these leaks and you can boost your close rate by <strong>20% or more</strong> — without spending a single extra dollar on ads.</p>
-      <a class="btn btn-primary" href="#cta">Show Me What I'm Losing</a>
+      <a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Show Me What I'm Losing</a>
     </div>
   </div>
 </section>
@@ -615,7 +642,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
       </ul>
     </div>
     <div style="text-align:center;margin-top:3rem" class="reveal">
-      <a class="btn btn-primary" href="#pricing">See the Packages →</a>
+      <a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">See the Packages →</a>
     </div>
   </div>
 </section>
@@ -648,7 +675,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
           <li>Lead source attribution reporting</li>
           <li>7-day deployment and hands-on training</li>
         </ul>
-        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#cta">Start with Foundation →</a>
+        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#" onclick="showExitPopup(); return false;">Start with Foundation →</a>
       </div>
       <div class="price-card popular reveal reveal-delay-2">
         <div class="popular-badge">⭐ Most Popular</div>
@@ -670,7 +697,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
           <li>Audience research & targeting refinement</li>
           <li>Creative testing & ad copy optimization</li>
         </ul>
-        <a class="btn btn-primary" style="width:100%;text-align:center;display:block" href="#cta">Scale with Growth →</a>
+        <a class="btn btn-primary" style="width:100%;text-align:center;display:block" href="#" onclick="showExitPopup(); return false;">Scale with Growth →</a>
       </div>
       <div class="price-card reveal reveal-delay-3">
         <div class="price-tier">Full Dominance</div>
@@ -692,7 +719,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
           <li>White-glove support with priority response</li>
           <li>Quarterly business review & strategic planning</li>
         </ul>
-        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#cta">Dominate Your Market →</a>
+        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#" onclick="showExitPopup(); return false;">Dominate Your Market →</a>
       </div>
     </div>
     <p class="price-note reveal">💡 <strong>80% of Foundation clients</strong> upgrade to Growth within 90 days once they see results. Start small, scale smart.</p>
@@ -888,7 +915,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
           <div class="cta-price-setup">$7,500+ setup</div>
         </div>
       </div>
-      <a class="btn btn-primary" style="font-size:1rem;padding:1.1rem 2.5rem" href="https://cal.com/weffi/strategysession">📅 Book Your Free Revenue Audit</a>
+      <a class="btn btn-primary" style="font-size:1rem;padding:1.1rem 2.5rem" href="#" onclick="showExitPopup(); return false;">📅 Book Your Free Revenue Audit</a>
       <div class="cta-checkmarks">
         <div class="cta-check">No credit card required</div>
         <div class="cta-check">30-minute audit call</div>
@@ -922,7 +949,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
           <li><a href="#pricing">Growth System™</a></li>
           <li><a href="#pricing">Authority System™</a></li>
           <li><a href="#system">How It Works</a></li>
-          <li><a href="#cta">Book a Free Audit</a></li>
+        <li><a href="#" onclick="showExitPopup(); return false;">Book a Free Audit</a></li>
         </ul>
       </div>
       <div>
@@ -946,7 +973,145 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
   </div>
 </footer>
 
+<!-- EXIT INTENT POPUP -->
+<div class="vs-exit-overlay" id="vsExitOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="vs-exit-card" role="document">
+    <div class="vs-exit-head">
+      <div class="vs-exit-title">Fill Out The Information To Book A Demo</div>
+      <div class="vs-exit-sub">See how easy it is to grow your business with Vincir Systems</div>
+    </div>
+    <div class="vs-exit-body" id="vsExitBody">
+      <form id="vsExitForm">
+        <div class="vs-form-grid">
+          <div class="vs-field">
+            <label for="vsFullName">Full Name *</label>
+            <input id="vsFullName" name="fullName" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsPhone">Phone *</label>
+            <div class="vs-phone-wrap">
+              <div class="vs-flag" aria-hidden="true"><span>🇺🇸</span> +1</div>
+              <input id="vsPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(555) 123-4567" required>
+            </div>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsEmail">Email *</label>
+            <input id="vsEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsWebsite">Website URL *</label>
+            <input id="vsWebsite" name="websiteUrl" type="url" inputmode="url" placeholder="https://yourwebsite.com" required>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsRevenue">Annual Revenue</label>
+            <select id="vsRevenue" name="annualRevenue">
+              <option value="" selected>Select one…</option>
+              <option>Under $100K</option>
+              <option>$100K–$250K</option>
+              <option>$250K–$500K</option>
+              <option>$500K–$1M</option>
+              <option>$1M–$3M</option>
+              <option>Over $3M</option>
+            </select>
+          </div>
+
+          <div class="vs-terms">
+            <input id="vsTerms" name="termsConsent" type="checkbox" required>
+            <label for="vsTerms">I agree to the terms &amp; conditions provided by Vincir Systems. I agree to receive text messages from this business.</label>
+          </div>
+
+          <div class="vs-submit">
+            <button type="submit">Send Me The Details 👉</button>
+            <a class="vs-nothanks" href="#" onclick="hideExitPopup(); return false;">No thanks</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script>
+// ===== EXIT INTENT POPUP =====
+const VS_APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL';
+const VS_SESSION_KEY = 'vs_exit_popup_autofired';
+
+function showExitPopup() {
+  const overlay = document.getElementById('vsExitOverlay');
+  if (!overlay) return;
+  overlay.classList.add('show');
+  overlay.setAttribute('aria-hidden', 'false');
+  const first = document.getElementById('vsFullName');
+  if (first) setTimeout(() => first.focus(), 50);
+}
+
+function hideExitPopup() {
+  const overlay = document.getElementById('vsExitOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('show');
+  overlay.setAttribute('aria-hidden', 'true');
+}
+
+(function initExitIntent() {
+  const overlay = document.getElementById('vsExitOverlay');
+  if (!overlay) return;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) hideExitPopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hideExitPopup();
+  });
+
+  // Desktop: exit intent (mouse leaves top of viewport)
+  const onMouseOut = (e) => {
+    if (sessionStorage.getItem(VS_SESSION_KEY)) return;
+    const from = e.relatedTarget || e.toElement;
+    if (from) return;
+    if (typeof e.clientY === 'number' && e.clientY <= 0) {
+      sessionStorage.setItem(VS_SESSION_KEY, '1');
+      showExitPopup();
+    }
+  };
+  document.addEventListener('mouseout', onMouseOut);
+
+  // Mobile: after 30 seconds
+  setTimeout(() => {
+    if (sessionStorage.getItem(VS_SESSION_KEY)) return;
+    sessionStorage.setItem(VS_SESSION_KEY, '1');
+    showExitPopup();
+  }, 30000);
+})();
+
+(function initExitForm() {
+  const form = document.getElementById('vsExitForm');
+  const body = document.getElementById('vsExitBody');
+  if (!form || !body) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const fd = new FormData(form);
+    // Force +1 prefix into phone value if user didn't include country code.
+    const rawPhone = String(fd.get('phone') || '').trim();
+    if (rawPhone && !rawPhone.startsWith('+')) fd.set('phone', '+1 ' + rawPhone);
+
+    try {
+      if (VS_APPS_SCRIPT_URL && VS_APPS_SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL') {
+        await fetch(VS_APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
+      }
+    } catch (_) {
+      // Intentionally swallow network errors; we still show a success screen.
+    }
+
+    body.innerHTML = '<div class="vs-thanks"><h3>Thanks — you’re all set.</h3><p>We received your info. We’ll text/email you the details shortly.</p></div>';
+    setTimeout(() => hideExitPopup(), 4000);
+  });
+})();
+
 // ===== SCROLL REVEAL =====
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
