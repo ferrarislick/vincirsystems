@@ -86,7 +86,11 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(70,211,255,0.35)}
 .btn-ghost{color:var(--muted);border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03)}
 .btn-ghost:hover{background:rgba(255,255,255,0.07);color:var(--text)}
-@media(max-width:900px){.nav-links{display:none}}
+.mobile-nav-cta{display:none;padding:0.62rem 1rem;font-size:0.75rem;letter-spacing:0.04em;white-space:nowrap}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .mobile-nav-cta{display:inline-flex}
+}
 
 /* ===== HERO ===== */
 .hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
@@ -433,6 +437,7 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
         <li><a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Get Free Revenue Audit</a></li>
       </ul>
     </nav>
+    <a class="btn btn-primary mobile-nav-cta" href="#" onclick="showExitPopup(); return false;">Free Revenue Audit</a>
   </div>
 </div>
 
@@ -980,8 +985,8 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
   <div class="vs-exit-card" role="document">
     <div class="vs-exit-head">
       <button class="vs-exit-x" type="button" aria-label="Close" onclick="hideExitPopup(); return false;">×</button>
-      <div class="vs-exit-title">Fill Out The Information To Book A Demo</div>
-      <div class="vs-exit-sub">See how easy it is to grow your business with Vincir Systems</div>
+      <div class="vs-exit-title">Request Your Free Revenue Audit</div>
+      <div class="vs-exit-sub">Find out exactly where your business is losing revenue — and how to fix it.</div>
     </div>
     <div class="vs-exit-body" id="vsExitBody">
       <form id="vsExitForm">
@@ -1028,8 +1033,8 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
           </div>
 
           <div class="vs-submit">
-            <button type="submit">Send Me The Details 👉</button>
-            <a class="vs-nothanks" href="#" onclick="hideExitPopup(); return false;">No thanks</a>
+            <button type="submit">Request My Free Audit →</button>
+            <a class="vs-nothanks" href="#" onclick="hideExitPopup(); return false;">No thanks, I'll keep losing revenue on my own</a>
           </div>
         </div>
       </form>
