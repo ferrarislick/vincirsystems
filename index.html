@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vincir Systems | AI Revenue Infrastructure for Home Automation Businesses</title>
+<meta name="description" content="AI-powered lead capture, follow-up, and booking automation built exclusively for home automation and smart home integration businesses.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050b14;
+  --bg2:#07101c;
+  --panel:rgba(255,255,255,0.04);
+  --panel2:rgba(255,255,255,0.06);
+  --panel3:rgba(255,255,255,0.08);
+  --cyan:#46d3ff;
+  --blue:#1c63ff;
+  --cyan-dim:rgba(70,211,255,0.18);
+  --cyan-glow:rgba(70,211,255,0.08);
+  --blue-glow:rgba(28,99,255,0.15);
+  --text:#ffffff;
+  --muted:#b8c0cc;
+  --muted2:#7a8599;
+  --line:rgba(255,255,255,0.08);
+  --line-cyan:rgba(70,211,255,0.18);
+  --red:#ff4d4d;
+  --green:#00e676;
+  --border-r:24px;
+  --border-r-sm:16px;
+  --border-r-xs:12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--cyan-dim);border-radius:3px}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(70,211,255,0.3)}50%{box-shadow:0 0 40px rgba(70,211,255,0.6),0 0 80px rgba(28,99,255,0.3)}}
+@keyframes orbit{0%{transform:rotate(0deg) translateX(120px) rotate(0deg)}100%{transform:rotate(360deg) translateX(120px) rotate(-360deg)}}
+@keyframes countUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes borderGlow{0%,100%{border-color:var(--cyan-dim)}50%{border-color:rgba(70,211,255,0.5)}}
+@keyframes bgFloat{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+.reveal-delay-5{transition-delay:0.5s}
+.reveal-delay-6{transition-delay:0.6s}
+
+/* ===== NAV ===== */
+.topbar{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--line-cyan);backdrop-filter:blur(20px);background:rgba(5,11,20,0.92);transition:all 0.3s}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px;gap:1rem}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-logo{font-size:1.1rem;font-weight:900;letter-spacing:0.2em;color:var(--text)}
+.brand-logo span{color:var(--cyan)}
+.brand-sub{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(70,211,255,0.8);margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:rgba(7,16,28,0.98);border:1px solid var(--line-cyan);border-radius:var(--border-r-sm);padding:8px;min-width:260px;opacity:0;pointer-events:none;transition:all 0.2s;backdrop-filter:blur(20px)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all}
+.nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--muted);font-size:0.82rem;transition:all 0.15s}
+.nav-dropdown-item:hover{background:var(--panel2);color:var(--text)}
+.nav-dropdown-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.nav-dropdown-icon.f{background:rgba(70,211,255,0.1);border:1px solid var(--cyan-dim)}
+.nav-dropdown-icon.g{background:rgba(28,99,255,0.1);border:1px solid rgba(28,99,255,0.2)}
+.nav-dropdown-icon.a{background:rgba(138,43,226,0.1);border:1px solid rgba(138,43,226,0.2)}
+.nav-dropdown-text-main{font-weight:600;color:var(--text);font-size:0.82rem}
+.nav-dropdown-text-sub{font-size:0.7rem;color:var(--muted2)}
+.btn{display:inline-block;text-decoration:none;color:var(--text);font-weight:700;border-radius:20px;padding:0.85rem 1.4rem;transition:all 0.2s;font-size:0.85rem;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(90deg,var(--cyan),var(--blue));box-shadow:0 8px 24px rgba(70,211,255,0.2);animation:glowPulse 3s ease-in-out infinite}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(70,211,255,0.35)}
+.btn-ghost{color:var(--muted);border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03)}
+.btn-ghost:hover{background:rgba(255,255,255,0.07);color:var(--text)}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 15% 20%,rgba(0,163,255,0.18),transparent 40%),
+             radial-gradient(ellipse 60% 50% at 85% 10%,rgba(28,99,255,0.22),transparent 40%),
+             radial-gradient(ellipse 50% 60% at 50% 90%,rgba(70,211,255,0.08),transparent 50%),
+             linear-gradient(180deg,#061020 0%,var(--bg) 100%);
+  animation:bgFloat 12s ease-in-out infinite;
+  background-size:200% 200%}
+.hero-grid{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:5rem 5% 3rem;width:100%;display:grid;grid-template-columns:1.15fr 0.85fr;gap:4rem;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--cyan-dim);background:var(--cyan-glow);border-radius:999px;padding:0.45rem 0.9rem;font-size:0.72rem;font-weight:800;letter-spacing:0.24em;text-transform:uppercase;color:rgba(70,211,255,0.9);margin-bottom:1.2rem;animation:fadeUp 0.6s ease forwards}
+.hero-pill-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+.hero h1{font-size:clamp(2.8rem,6vw,5.2rem);line-height:0.95;letter-spacing:-0.04em;font-weight:900;margin:0.8rem 0 0;animation:fadeUp 0.7s 0.1s ease forwards;opacity:0}
+.hero h1 .grad{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-lead{font-size:1.1rem;line-height:1.8;max-width:560px;color:var(--muted);margin:1.4rem 0 0;animation:fadeUp 0.7s 0.2s ease forwards;opacity:0}
+.hero-micro{color:rgba(70,211,255,0.9);margin-top:0.8rem;font-size:0.95rem;font-weight:500;animation:fadeUp 0.7s 0.3s ease forwards;opacity:0}
+.hero-micro span{color:var(--red)}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;animation:fadeUp 0.7s 0.4s ease forwards;opacity:0}
+
+/* Hero Card */
+.hero-card{background:var(--panel);border:1px solid var(--line-cyan);border-radius:var(--border-r);padding:1.2rem;box-shadow:0 32px 64px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.06);animation:fadeUp 0.8s 0.3s ease forwards;opacity:0}
+.hero-card-inner{background:#071120;border:1px solid var(--line);border-radius:20px;padding:1.4rem}
+.hc-eyebrow{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--muted2)}
+.hc-title{margin-top:0.6rem;font-size:1.5rem;font-weight:800;line-height:1.25;color:var(--text)}
+.hc-title span{color:var(--red)}
+.hc-stack{margin-top:1rem;display:grid;gap:0.6rem}
+.hc-item{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:0.85rem 1rem;color:var(--muted);font-size:0.88rem;display:flex;align-items:center;gap:10px;transition:all 0.2s}
+.hc-item:hover{border-color:var(--cyan-dim);background:var(--panel2);color:var(--text)}
+.hc-item-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.hc-item-dot.red{background:var(--red)}
+.hc-item-dot.amber{background:#ffb800}
+.hc-item-dot.red2{background:#ff6b35}
+.hc-item-dot.red3{background:#e91e63}
+
+/* ===== TICKER ===== */
+.ticker-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line-cyan);border-bottom:1px solid var(--line-cyan);background:linear-gradient(90deg,rgba(70,211,255,0.03),rgba(28,99,255,0.05),rgba(70,211,255,0.03));padding:14px 0}
+.ticker-inner{display:inline-flex;gap:0;animation:ticker 35s linear infinite}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(70,211,255,0.75)}
+.ticker-item::after{content:'';width:4px;height:4px;background:var(--cyan-dim);border-radius:50%;margin-left:32px}
+
+/* ===== SHARED SECTION ===== */
+.section{padding:5rem 0}
+.section.alt{background:var(--bg2)}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 5%}
+.section-kicker{color:rgba(70,211,255,0.9);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.25em;font-weight:800;margin-bottom:0.75rem}
+.section h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-0.03em;font-weight:900;margin:0}
+.section h2 .grad{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-copy{margin-top:1rem;color:var(--muted);font-size:1rem;line-height:1.85;max-width:720px}
+.section-divider{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--line-cyan),transparent)}
+
+/* ===== STATS BAR ===== */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-cyan);border-radius:var(--border-r);overflow:hidden;margin-top:3rem}
+.stat-block{background:linear-gradient(145deg,rgba(70,211,255,0.06),rgba(28,99,255,0.04));padding:2.5rem 2rem;text-align:center;transition:background 0.3s}
+.stat-block:hover{background:linear-gradient(145deg,rgba(70,211,255,0.12),rgba(28,99,255,0.08))}
+.stat-val{color:var(--cyan);font-size:2.8rem;font-weight:900;letter-spacing:-0.03em;line-height:1}
+.stat-desc{margin-top:0.6rem;color:var(--muted);font-size:0.9rem;line-height:1.55}
+
+/* ===== PROBLEM CARDS ===== */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.problem-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.problem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#ff6b35)}
+.problem-card:hover{border-color:rgba(255,77,77,0.4);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.problem-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.problem-pct{font-size:2.5rem;font-weight:900;color:var(--red);line-height:1;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.problem-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text)}
+.problem-card p{color:var(--muted);font-size:0.9rem;line-height:1.7}
+.problem-cta{margin-top:3rem;text-align:center}
+.problem-cta p{color:var(--muted);font-size:1rem;margin-bottom:1.5rem}
+.problem-cta strong{color:var(--text)}
+
+/* ===== VS SECTION ===== */
+.vs-wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:2rem;align-items:center;max-width:900px;margin:3rem auto 0}
+.vs-card{border-radius:var(--border-r);padding:2.2rem}
+.vs-card.bad{background:rgba(255,77,77,0.04);border:1px solid rgba(255,77,77,0.15)}
+.vs-card.good{background:linear-gradient(145deg,rgba(70,211,255,0.08),rgba(28,99,255,0.06));border:1px solid var(--cyan-dim);animation:borderGlow 4s ease-in-out infinite}
+.vs-label{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;padding:0.45rem 1rem;border-radius:999px;margin-bottom:1.4rem}
+.vs-label.bad-lbl{background:rgba(255,77,77,0.1);color:var(--red);border:1px solid rgba(255,77,77,0.2)}
+.vs-label.good-lbl{background:var(--cyan-glow);color:var(--cyan);border:1px solid var(--cyan-dim)}
+.vs-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:1rem;font-size:0.92rem;color:var(--muted);line-height:1.5}
+.vs-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;font-weight:700}
+.bad .vs-icon{background:rgba(255,77,77,0.15);color:var(--red)}
+.good .vs-icon{background:rgba(70,211,255,0.1);color:var(--cyan)}
+.vs-mid{display:flex;align-items:center;justify-content:center}
+.vs-badge{width:54px;height:54px;background:var(--bg2);border:2px solid var(--cyan-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;letter-spacing:0.1em;color:var(--cyan)}
+
+/* ===== PRINCIPLES ===== */
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.principle{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2.2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.principle::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.principle:hover{border-color:var(--cyan-dim);transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,0.3)}
+.principle-step{color:rgba(70,211,255,0.7);font-size:0.7rem;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:0.8rem}
+.principle h3{font-size:2rem;font-weight:900;letter-spacing:-0.02em;color:var(--text);line-height:1.1;margin-bottom:0.6rem}
+.principle p{color:var(--muted);font-size:0.9rem;line-height:1.75}
+
+/* ===== SYSTEM DIAGRAM ===== */
+.system-wrap{margin-top:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.system-orbit{position:relative;width:320px;height:320px;margin:0 auto}
+.orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;background:linear-gradient(135deg,rgba(70,211,255,0.15),rgba(28,99,255,0.15));border:2px solid var(--cyan-dim);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(70,211,255,0.2)}
+.orbit-center-text{font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);text-align:center;line-height:1.3}
+.orbit-ring{position:absolute;top:50%;left:50%;width:280px;height:280px;border:1px dashed rgba(70,211,255,0.15);border-radius:50%;transform:translate(-50%,-50%)}
+.orbit-icon{position:absolute;width:46px;height:46px;background:rgba(7,16,28,0.95);border:1px solid var(--line-cyan);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;top:50%;left:50%;transform-origin:0 0;box-shadow:0 4px 16px rgba(0,0,0,0.4)}
+.system-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.system-list-item{display:flex;align-items:flex-start;gap:14px;padding:1.1rem 1.2rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--border-r-sm);transition:all 0.2s}
+.system-list-item:hover{border-color:var(--cyan-dim);background:var(--panel2)}
+.system-list-icon{width:36px;height:36px;background:var(--cyan-glow);border:1px solid var(--cyan-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.system-list-text{font-size:0.9rem;color:var(--muted);line-height:1.5}
+.system-list-text strong{color:var(--text);display:block;margin-bottom:2px;font-size:0.95rem}
+
+/* ===== PRICING ===== */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.price-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2.2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.price-card:nth-child(1)::before{background:var(--muted2)}
+.price-card:nth-child(2)::before{background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.price-card:nth-child(3)::before{background:linear-gradient(90deg,var(--blue),#8b5cf6)}
+.price-card.popular{background:linear-gradient(145deg,rgba(70,211,255,0.08),rgba(28,99,255,0.06));border-color:var(--cyan-dim);animation:borderGlow 4s ease-in-out infinite}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 32px 64px rgba(0,0,0,0.4)}
+.popular-badge{position:absolute;top:1.4rem;right:1.4rem;background:linear-gradient(90deg,var(--cyan),var(--blue));color:#050b14;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.price-tier{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted2);margin-bottom:0.5rem}
+.price-name{font-size:1.6rem;font-weight:900;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem}
+.price-setup{font-size:0.8rem;color:var(--muted2);margin-bottom:0.4rem}
+.price-amount{display:flex;align-items:baseline;gap:4px;margin-bottom:1.5rem}
+.price-amount .num{font-size:3.2rem;font-weight:900;letter-spacing:-0.03em;color:var(--cyan);line-height:1}
+.price-amount .per{font-size:0.85rem;color:var(--muted2)}
+.price-hr{height:1px;background:var(--line);margin-bottom:1.5rem}
+.price-list{list-style:none;margin-bottom:2rem}
+.price-list li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.875rem;color:var(--muted);line-height:1.4}
+.price-list li:last-child{border-bottom:none}
+.price-list li::before{content:'✓';color:var(--cyan);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-list li.na{color:rgba(255,255,255,0.2)}
+.price-list li.na::before{content:'—';color:rgba(255,255,255,0.15)}
+.price-note{text-align:center;margin-top:2rem;font-size:0.85rem;color:var(--muted2);padding:1rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--border-r-sm)}
+.price-note strong{color:var(--cyan)}
+
+/* ===== COMPARE TABLE ===== */
+.compare-section{margin-top:4rem}
+.compare-title{font-size:0.75rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted2);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
+.compare-title::before,.compare-title::after{content:'';flex:1;height:1px;background:var(--line)}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th{padding:14px 20px;text-align:left;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted2);border-bottom:1px solid var(--line-cyan);background:rgba(70,211,255,0.02)}
+.compare-table th:not(:first-child){text-align:center}
+.compare-table th.col-pop{color:var(--cyan)}
+.compare-table td{padding:13px 20px;border-bottom:1px solid var(--line);font-size:0.875rem;color:var(--muted)}
+.compare-table td:not(:first-child){text-align:center}
+.compare-table tbody tr:hover td{background:rgba(255,255,255,0.02)}
+.compare-table tr:last-child td{border-bottom:none}
+.check{color:var(--cyan);font-weight:700;font-size:1rem}
+.dash{color:rgba(255,255,255,0.18)}
+.price-row-tr td{color:var(--text);font-weight:800;font-size:1rem;padding-top:18px}
+.price-row-tr td.col-pop-val{color:var(--cyan)}
+.compare-wrap{overflow-x:auto;border:1px solid var(--line-cyan);border-radius:var(--border-r);overflow:hidden}
+
+/* ===== TESTIMONIALS ===== */
+.testi-carousel-wrap{overflow:hidden;margin-top:3rem;position:relative}
+.testi-carousel-wrap::before,.testi-carousel-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.testi-carousel-wrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent)}
+.testi-carousel-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent)}
+.testi-track{display:inline-flex;gap:1.2rem;animation:slideLeft 40s linear infinite}
+.testi-track:hover{animation-play-state:paused}
+.testi-card{flex-shrink:0;width:340px;border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:1.8rem;transition:all 0.2s}
+.testi-card:hover{border-color:var(--cyan-dim);background:var(--panel2);transform:translateY(-4px)}
+.testi-result-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,230,118,0.08);border:1px solid rgba(0,230,118,0.2);color:var(--green);font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:1rem}
+.testi-result-badge::before{content:'↑';font-size:0.75rem}
+.testi-quote{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.8rem;color:#050b14;flex-shrink:0}
+.testi-name{font-size:0.875rem;font-weight:700;color:var(--text)}
+.testi-role{font-size:0.75rem;color:var(--muted2)}
+
+/* ===== RESULTS BAR ===== */
+.results-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-cyan);border-radius:var(--border-r);overflow:hidden;margin-top:3rem}
+.result-block{background:linear-gradient(145deg,rgba(70,211,255,0.05),rgba(28,99,255,0.03));padding:2.5rem 2rem;text-align:center;transition:background 0.3s}
+.result-block:hover{background:linear-gradient(145deg,rgba(70,211,255,0.1),rgba(28,99,255,0.07))}
+.result-val{font-size:3rem;font-weight:900;letter-spacing:-0.03em;line-height:1;margin-bottom:0.5rem}
+.result-val.up{color:var(--green)}
+.result-val.down{color:var(--cyan)}
+.result-val.fast{color:#a78bfa}
+.result-desc{font-size:0.875rem;color:var(--muted);line-height:1.5}
+
+/* ===== WHY US ===== */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.why-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2rem;transition:all 0.3s}
+.why-card:hover{border-color:var(--cyan-dim);transform:translateY(-4px);background:var(--panel2)}
+.why-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.why-card h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.75rem}
+.why-card p{font-size:0.875rem;color:var(--muted);line-height:1.7}
+
+/* ===== NICHES ===== */
+.niches-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
+.niche-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r-sm);padding:1.4rem;text-align:center;transition:all 0.2s;cursor:default}
+.niche-card:hover{border-color:var(--cyan-dim);background:var(--panel2);transform:translateY(-2px)}
+.niche-icon{font-size:1.6rem;margin-bottom:0.6rem;display:block}
+.niche-name{font-size:0.82rem;font-weight:600;color:var(--muted)}
+
+/* ===== FAQ ===== */
+.faq-list{margin-top:3rem;display:flex;flex-direction:column;gap:0.75rem}
+.faq-item{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r-sm);overflow:hidden;transition:border-color 0.2s}
+.faq-item.open{border-color:var(--cyan-dim)}
+.faq-q{padding:1.3rem 1.5rem;font-size:1rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:color 0.2s}
+.faq-q:hover{color:var(--cyan)}
+.faq-chevron{width:28px;height:28px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--cyan);transition:transform 0.3s,background 0.2s;flex-shrink:0}
+.faq-item.open .faq-chevron{transform:rotate(45deg);background:var(--cyan-glow)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease}
+.faq-a-inner{padding:0 1.5rem 1.3rem;font-size:0.9rem;color:var(--muted);line-height:1.8}
+.faq-item.open .faq-a{max-height:300px}
+
+/* ===== CTA ===== */
+.cta-section{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);padding:5rem 0}
+.cta-box{border:1px solid var(--line-cyan);background:var(--panel);border-radius:32px;padding:4rem 3rem;text-align:center;box-shadow:0 40px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05);position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(70,211,255,0.1),transparent 70%);pointer-events:none}
+.cta-box h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:1rem}
+.cta-copy{color:var(--muted);font-size:1rem;line-height:1.8;max-width:600px;margin:0 auto 2.5rem}
+.cta-price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;max-width:700px;margin-left:auto;margin-right:auto}
+.cta-price-card{border:1px solid var(--line);background:rgba(255,255,255,0.03);border-radius:16px;padding:1.4rem;text-align:left}
+.cta-price-card.pop{border-color:var(--cyan-dim);background:var(--cyan-glow)}
+.cta-price-tier{font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted2);margin-bottom:4px}
+.cta-price-card.pop .cta-price-tier{color:var(--cyan)}
+.cta-price-amt{font-size:1.8rem;font-weight:900;color:var(--text);line-height:1}
+.cta-price-setup{font-size:0.72rem;color:var(--muted2);margin-top:2px}
+.cta-checkmarks{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+.cta-check{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--muted2)}
+.cta-check::before{content:'✓';color:var(--cyan);font-weight:700}
+.cta-phone{margin-top:1.5rem;font-size:0.9rem;color:var(--muted2)}
+.cta-phone a{color:var(--cyan);text-decoration:none;font-weight:700}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5% 2.5rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line)}
+.footer-brand-name{font-size:1.05rem;font-weight:900;letter-spacing:0.2em;color:var(--text);margin-bottom:4px}
+.footer-brand-name span{color:var(--cyan)}
+.footer-tagline{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(70,211,255,0.7);margin-bottom:1.2rem}
+.footer-desc{font-size:0.85rem;color:var(--muted2);line-height:1.75;margin-bottom:1.5rem}
+.footer-contact{display:flex;flex-direction:column;gap:10px}
+.footer-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted2);font-size:0.85rem;transition:color 0.2s}
+.footer-contact-link:hover{color:var(--text)}
+.footer-contact-icon{width:28px;height:28px;background:var(--panel2);border:1px solid var(--line);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0}
+.footer-col-title{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:0.875rem;color:var(--muted2);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:0.8rem;color:var(--muted2);line-height:1.6}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{font-size:0.8rem;color:var(--muted2);text-decoration:none;transition:color 0.2s}
+.footer-legal a:hover{color:var(--muted)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .hero-grid,.system-wrap{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .principles-grid,.problem-grid,.pricing-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .vs-wrap{grid-template-columns:1fr;gap:1rem}
+  .vs-mid{display:none}
+  .stats-row,.results-row{grid-template-columns:1fr 1fr}
+  .niches-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .principles-grid,.problem-grid,.pricing-grid,.why-grid,.stats-row,.results-row,.niches-grid,.cta-price-cards{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <div>
+        <div class="brand-logo">VINCIR <span>SYSTEMS</span></div>
+        <div class="brand-sub">AI Revenue Infrastructure</div>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#foundation">Foundation</a></li>
+        <li class="nav-dropdown">
+          <a href="#pricing">Systems ▾</a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-item" href="#pricing">
+              <div class="nav-dropdown-icon f">F</div>
+              <div><div class="nav-dropdown-text-main">Foundation System</div><div class="nav-dropdown-text-sub">Start here</div></div>
+            </a>
+            <a class="nav-dropdown-item" href="#pricing">
+              <div class="nav-dropdown-icon g">G</div>
+              <div><div class="nav-dropdown-text-main">Growth System</div><div class="nav-dropdown-text-sub">Most popular</div></div>
+            </a>
+            <a class="nav-dropdown-item" href="#pricing">
+              <div class="nav-dropdown-icon a">A</div>
+              <div><div class="nav-dropdown-text-main">Authority System</div><div class="nav-dropdown-text-sub">Full market dominance</div></div>
+            </a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#system">Solutions ▾</a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-item" href="#system">🤖 AI Lead Response Agent</a>
+            <a class="nav-dropdown-item" href="#system">📱 Missed Call Text-Back</a>
+            <a class="nav-dropdown-item" href="#system">⚡ Automated Follow-Up</a>
+            <a class="nav-dropdown-item" href="#system">📅 Smart Appointment Booking</a>
+            <a class="nav-dropdown-item" href="#system">📊 CRM & Sales Pipeline</a>
+            <a class="nav-dropdown-item" href="#system">⭐ Review Management</a>
+            <a class="nav-dropdown-item" href="#system">📈 Revenue Dashboards</a>
+            <a class="nav-dropdown-item" href="#system">🎙️ AI Voice Agent</a>
+          </div>
+        </li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Results</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="btn btn-primary" href="#cta">Get Free Revenue Audit</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-pill"><div class="hero-pill-dot"></div>AI Revenue Infrastructure for Smart Home Integrators</div>
+      <h1>Stop Losing Leads to <span class="grad">Missed Calls</span> and Slow Follow&#8209;Ups</h1>
+      <p class="hero-lead">You are not losing jobs because of your prices or your skills. You are losing them because calls go to voicemail, web leads wait hours for a reply, and follow-ups never happen. Vincir Systems is the AI-powered backbone that plugs every leak and turns missed chances into booked installations.</p>
+      <p class="hero-micro">Every unanswered call could be a <span>$10,000–$50,000</span> project walking to your competitor.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#cta">Get Started — Book a Free Audit</a>
+        <a class="btn btn-ghost" href="#foundation">See How It Works ↓</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hc-eyebrow">Your Revenue Leak</div>
+          <div class="hc-title">Every missed call can become a lost <span>$5K–$50K project.</span></div>
+          <div class="hc-stack">
+            <div class="hc-item"><div class="hc-item-dot red"></div>Missed calls while on installs cost high-value jobs</div>
+            <div class="hc-item"><div class="hc-item-dot amber"></div>Slow follow-up lets competitors win the project first</div>
+            <div class="hc-item"><div class="hc-item-dot red2"></div>No CRM means leads fall through the cracks daily</div>
+            <div class="hc-item"><div class="hc-item-dot red3"></div>Owner-dependent ops trap you as the glorified technician</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item">🏠 Smart Home Integration</span>
+    <span class="ticker-item">🎬 Home Theater</span>
+    <span class="ticker-item">🔒 Security Systems</span>
+    <span class="ticker-item">💡 Lighting Control</span>
+    <span class="ticker-item">🌡️ Climate Automation</span>
+    <span class="ticker-item">🔊 Whole-Home Audio</span>
+    <span class="ticker-item">📷 Surveillance & CCTV</span>
+    <span class="ticker-item">🚪 Access Control</span>
+    <span class="ticker-item">⚡ Energy Management</span>
+    <span class="ticker-item">🤖 AI Automation</span>
+    <span class="ticker-item">🏠 Smart Home Integration</span>
+    <span class="ticker-item">🎬 Home Theater</span>
+    <span class="ticker-item">🔒 Security Systems</span>
+    <span class="ticker-item">💡 Lighting Control</span>
+    <span class="ticker-item">🌡️ Climate Automation</span>
+    <span class="ticker-item">🔊 Whole-Home Audio</span>
+    <span class="ticker-item">📷 Surveillance & CCTV</span>
+    <span class="ticker-item">🚪 Access Control</span>
+    <span class="ticker-item">⚡ Energy Management</span>
+    <span class="ticker-item">🤖 AI Automation</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section" id="stats">
+  <div class="section-inner">
+    <div class="stats-row reveal">
+      <div class="stat-block"><div class="stat-val" data-count="50">0</div><div class="stat-desc">Percent of leads lost every month to missed calls and dead-end follow-ups</div></div>
+      <div class="stat-block"><div class="stat-val" data-count="21" data-suffix="×">0</div><div class="stat-desc">More likely to convert when you respond in under 5 minutes of inquiry</div></div>
+      <div class="stat-block"><div class="stat-val" data-count="78" data-suffix="%">0</div><div class="stat-desc">Of homeowners hire the company that responds first — not the most skilled</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PROBLEM -->
+<section class="section alt" id="problem">
+  <div class="section-inner">
+    <div class="section-kicker reveal">The Real Problem</div>
+    <h2 class="reveal reveal-delay-1">You Don't Have a Lead Problem —<br>You Have a <span class="grad">Response Problem</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Calls go to voicemail. Web inquiries wait hours. Old leads sit unworked. These gaps bleed revenue and create lumpy, unpredictable months — and every day it gets more competitive.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal reveal-delay-1">
+        <span class="problem-icon">📞</span>
+        <div class="problem-pct">20–35%</div>
+        <h3>Missed Calls = Missed Revenue</h3>
+        <p>Of calls go unanswered during peak install hours. Every ring that hits voicemail is a potential $10K–$50K project walking straight to your competitor who answered.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <span class="problem-icon">⏰</span>
+        <div class="problem-pct">50%</div>
+        <h3>Slow Follow-Up Kills Deals</h3>
+        <p>Of leads never receive a single follow-up call or message. The integrators who respond within minutes almost always win the job — regardless of price or skills.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <span class="problem-icon">🔗</span>
+        <div class="problem-pct">40%</div>
+        <h3>Disconnected Tools = Chaos</h3>
+        <p>Of revenue is lost to manual errors, scattered spreadsheets, and tools that don't talk to each other. You're managing the business instead of growing it.</p>
+      </div>
+    </div>
+    <div class="problem-cta reveal">
+      <p>Plug these leaks and you can boost your close rate by <strong>20% or more</strong> — without spending a single extra dollar on ads.</p>
+      <a class="btn btn-primary" href="#cta">Show Me What I'm Losing</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- VS -->
+<section class="section" id="foundation">
+  <div class="section-inner">
+    <div class="section-kicker reveal">The Vincir Difference</div>
+    <h2 class="reveal reveal-delay-1">Our Solution: The Vincir <span class="grad">AI Revenue System™</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Vincir Systems delivers a unified AI backbone that combines revenue infrastructure with performance marketing — built exclusively for home automation integrators. Here is how we do it, in the right order.</p>
+    <div class="vs-wrap">
+      <div class="vs-card bad reveal reveal-delay-1">
+        <div class="vs-label bad-lbl">🚰 Traditional Agencies</div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>Drive traffic to broken systems — leads fall through cracks</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>Money wasted on ads that never convert</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>Generic templates — not built for home automation</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>No follow-up system — you do it all manually</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>Swap them out every quarter when results don't come</span></div>
+      </div>
+      <div class="vs-mid"><div class="vs-badge">VS</div></div>
+      <div class="vs-card good reveal reveal-delay-2">
+        <div class="vs-label good-lbl">🔒 Vincir AI Approach</div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Install AI systems FIRST — capture every lead automatically</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Then scale with marketing once conversion is locked in</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Built exclusively for smart home integrators</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Automated follow-up runs 24/7 while you're on installs</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Deep integration — we become the backbone of your ops</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PRINCIPLES -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-kicker reveal">How It Works</div>
+    <h2 class="reveal reveal-delay-1">Three Principles.<br><span class="grad">One Unstoppable System.</span></h2>
+    <div class="principles-grid" style="margin-top:3rem">
+      <div class="principle reveal reveal-delay-1">
+        <div class="principle-step">Principle 01 — Systems First</div>
+        <h3>Build the Foundation</h3>
+        <p>We build or upgrade your website, CRM, and AI automations so every lead is captured and nurtured from the first second. No lead falls through the cracks — even when you're on-site.</p>
+      </div>
+      <div class="principle reveal reveal-delay-2">
+        <div class="principle-step">Principle 02 — Marketing Second</div>
+        <h3>Amplify Demand</h3>
+        <p>Once your conversion engine is locked in, we activate strategic advertising and outreach to drive qualified homeowners to your system. Every dollar works harder because the foundation catches everything.</p>
+      </div>
+      <div class="principle reveal reveal-delay-3">
+        <div class="principle-step">Principle 03 — Grow Continuously</div>
+        <h3>Layer AI & Scale</h3>
+        <p>As you scale, we add AI voice agents, reputation management, SEO, and premium content systems. This sequence protects your budget and maximizes lifetime value of every client.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SYSTEM DIAGRAM -->
+<section class="section" id="system">
+  <div class="section-inner">
+    <div class="section-kicker reveal">The Platform</div>
+    <h2 class="reveal reveal-delay-1">The Vincir AI Revenue System™</h2>
+    <p class="section-copy reveal reveal-delay-2">Everything you need to capture, convert, and book — managed in one powerful AI system built for home automation businesses.</p>
+    <div class="system-wrap">
+      <div class="reveal">
+        <div class="system-orbit">
+          <div class="orbit-ring"></div>
+          <div class="orbit-center">
+            <div class="orbit-center-text">VINCIR<br>AI<br>SYSTEM</div>
+          </div>
+          <div class="orbit-icon" style="transform:rotate(0deg) translateX(140px) rotate(0deg) translate(-50%,-50%)">🤖</div>
+          <div class="orbit-icon" style="transform:rotate(51deg) translateX(140px) rotate(-51deg) translate(-50%,-50%)">📱</div>
+          <div class="orbit-icon" style="transform:rotate(102deg) translateX(140px) rotate(-102deg) translate(-50%,-50%)">✉️</div>
+          <div class="orbit-icon" style="transform:rotate(153deg) translateX(140px) rotate(-153deg) translate(-50%,-50%)">📅</div>
+          <div class="orbit-icon" style="transform:rotate(204deg) translateX(140px) rotate(-204deg) translate(-50%,-50%)">🔔</div>
+          <div class="orbit-icon" style="transform:rotate(255deg) translateX(140px) rotate(-255deg) translate(-50%,-50%)">📊</div>
+          <div class="orbit-icon" style="transform:rotate(306deg) translateX(140px) rotate(-306deg) translate(-50%,-50%)">⭐</div>
+        </div>
+      </div>
+      <ul class="system-list reveal reveal-delay-2">
+        <li class="system-list-item">
+          <div class="system-list-icon">🤖</div>
+          <div class="system-list-text"><strong>AI Lead Response Agent</strong>Responds to every inquiry in seconds — qualifies and routes to booking automatically</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">📱</div>
+          <div class="system-list-text"><strong>Missed Call Text-Back</strong>Never miss another call — instant AI text captures the opportunity before they call your competitor</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">✉️</div>
+          <div class="system-list-text"><strong>Multi-Touch Follow-Up</strong>Automated SMS, email, and voicemail sequences until they book or opt out</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">📅</div>
+          <div class="system-list-text"><strong>Smart Booking & Reminders</strong>AI-powered calendar routing with automated confirmations — reduce no-shows by 40%</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">📊</div>
+          <div class="system-list-text"><strong>CRM & Revenue Dashboards</strong>Custom pipelines and real-time tracking built around the home automation sales cycle</div>
+        </li>
+      </ul>
+    </div>
+    <div style="text-align:center;margin-top:3rem" class="reveal">
+      <a class="btn btn-primary" href="#pricing">See the Packages →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PRICING -->
+<section class="section alt" id="pricing">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Transparent Pricing</div>
+    <h2 class="reveal reveal-delay-1">Choose Your <span class="grad">Growth Path</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Every client starts with Foundation. Scale to Growth or Authority when you are ready. No long-term contracts. No hidden fees.</p>
+    <div class="pricing-grid">
+      <div class="price-card reveal reveal-delay-1">
+        <div class="price-tier">Start Here</div>
+        <div class="price-name">Foundation System™</div>
+        <div class="price-setup">One-time setup: $1,500</div>
+        <div class="price-amount"><span class="num">$297</span><span class="per">/mo</span></div>
+        <div class="price-hr"></div>
+        <ul class="price-list">
+          <li>High-converting landing page or website</li>
+          <li>Integrated lead-capture on every page</li>
+          <li>Complete CRM with custom smart home pipeline</li>
+          <li>Missed-call instant AI text-back automation</li>
+          <li>Multi-channel follow-ups (SMS, email, voicemail)</li>
+          <li>Smart appointment booking with calendar routing</li>
+          <li>Automated confirmations and reminder sequences</li>
+          <li>Real-time revenue tracking dashboards</li>
+          <li>Dedicated tracking phone numbers</li>
+          <li>Lead source attribution reporting</li>
+          <li>7-day deployment and hands-on training</li>
+        </ul>
+        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#cta">Start with Foundation →</a>
+      </div>
+      <div class="price-card popular reveal reveal-delay-2">
+        <div class="popular-badge">⭐ Most Popular</div>
+        <div class="price-tier">Scale Up</div>
+        <div class="price-name">Growth System™</div>
+        <div class="price-setup">One-time setup: $3,000+</div>
+        <div class="price-amount"><span class="num">$597</span><span class="per">/mo</span></div>
+        <div class="price-hr"></div>
+        <ul class="price-list">
+          <li>Everything in Foundation System™</li>
+          <li>Meta Ads (Facebook & Instagram) management</li>
+          <li>Advanced funnel optimization & A/B testing</li>
+          <li>Conversion rate optimization (CRO)</li>
+          <li>Short-form content creation (Reels, Stories)</li>
+          <li>Retargeting campaigns for warm audiences</li>
+          <li>Landing page split testing</li>
+          <li>Weekly ad performance analysis & optimization</li>
+          <li>Monthly strategy & growth planning calls</li>
+          <li>Audience research & targeting refinement</li>
+          <li>Creative testing & ad copy optimization</li>
+        </ul>
+        <a class="btn btn-primary" style="width:100%;text-align:center;display:block" href="#cta">Scale with Growth →</a>
+      </div>
+      <div class="price-card reveal reveal-delay-3">
+        <div class="price-tier">Full Dominance</div>
+        <div class="price-name">Authority System™</div>
+        <div class="price-setup">One-time setup: $7,500+</div>
+        <div class="price-amount"><span class="num">$1,200</span><span class="per">/mo</span></div>
+        <div class="price-hr"></div>
+        <ul class="price-list">
+          <li>Everything in Growth System™</li>
+          <li>Multi-platform ads (Google, Meta, YouTube)</li>
+          <li>Complete social media management & strategy</li>
+          <li>Professional content systems (short + long form)</li>
+          <li>Full SEO optimization & local search domination</li>
+          <li>Google Business Profile optimization</li>
+          <li>AI Voice Agent (24/7 inbound call handling)</li>
+          <li>Reputation monitoring & review generation</li>
+          <li>Competitor analysis & market positioning</li>
+          <li>Brand development & messaging strategy</li>
+          <li>White-glove support with priority response</li>
+          <li>Quarterly business review & strategic planning</li>
+        </ul>
+        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#cta">Dominate Your Market →</a>
+      </div>
+    </div>
+    <p class="price-note reveal">💡 <strong>80% of Foundation clients</strong> upgrade to Growth within 90 days once they see results. Start small, scale smart.</p>
+
+    <!-- COMPARE TABLE -->
+    <div class="compare-section reveal">
+      <div class="compare-title">Feature-by-Feature Comparison</div>
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Foundation</th>
+              <th class="col-pop">Growth ⭐</th>
+              <th>Authority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Website & Hosting</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>AI Lead Capture & Response</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>CRM & Custom Pipelines</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Missed-Call AI Text-Back</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Multi-Channel Follow-Ups</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Appointment Booking & Reminders</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Revenue Dashboards</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Paid Ads Management</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Funnel Optimization & A/B Testing</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Retargeting Campaigns</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Content Creation (Reels/Stories)</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Monthly Strategy Calls</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>AI Voice Agent (24/7)</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Full SEO Optimization</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Reputation & Review Management</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Advanced AI Workflows</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Quarterly Business Reviews</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr class="price-row-tr"><td>Setup Fee</td><td>$1,500</td><td class="col-pop-val">$3,000+</td><td>$7,500+</td></tr>
+            <tr class="price-row-tr"><td>Monthly</td><td>$297/mo</td><td class="col-pop-val">$597/mo</td><td>$1,200/mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center;margin-top:1rem;font-size:0.8rem;color:var(--muted2)">ⓘ Every client starts with Foundation. Growth and Authority build on the previous tier.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Real Systems. Real Results.</div>
+    <h2 class="reveal reveal-delay-1">Home Automation Businesses<br><span class="grad">Already Winning</span></h2>
+    <p class="section-copy reveal reveal-delay-2">See how Vincir Systems helps integrators capture every revenue opportunity — before it walks to a competitor.</p>
+  </div>
+  <div class="testi-carousel-wrap" style="margin-top:3rem">
+    <div class="testi-track">
+      <div class="testi-card"><div class="testi-result-badge">3× Revenue in 60 Days</div><p class="testi-quote">"Before Vincir, I was missing 3–4 calls a day while on installs. Within 6 weeks the AI text-back alone booked 11 consultations I would have never gotten. Best investment in 8 years of business."</p><div class="testi-author"><div class="testi-av">MR</div><div><div class="testi-name">Marcus Rivera</div><div class="testi-role">Rivera Smart Home Solutions — Miami, FL</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">$180K Pipeline Month 1</div><p class="testi-quote">"The follow-up sequences are insane. Leads I thought were dead came back 2 weeks later. I went from feast-or-famine to a full calendar 3 months out. I didn't even need ads to get there."</p><div class="testi-author"><div class="testi-av">DK</div><div><div class="testi-name">David Kim</div><div class="testi-role">Precision AV Integrators — Austin, TX</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">40% Fewer No-Shows</div><p class="testi-quote">"The appointment reminders alone paid for the system. I used to lose 2–3 consults per week to no-shows. My Google reviews went from 14 to 67 in 4 months — completely on autopilot."</p><div class="testi-author"><div class="testi-av">SL</div><div><div class="testi-name">Sarah Lim</div><div class="testi-role">Luxe Home Tech — Los Angeles, CA</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">First $100K Month</div><p class="testi-quote">"I've been in smart home for 12 years and never hit six figures in a single month. The Growth System paid for itself 8× in month 2. The ads plus the follow-up system together is a completely different beast."</p><div class="testi-author"><div class="testi-av">TW</div><div><div class="testi-name">Tyler Walsh</div><div class="testi-role">Walsh Automation Group — Denver, CO</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">Pipeline Up 250% in 6 Weeks</div><p class="testi-quote">"Vince and the team actually understand our industry. They knew exactly what a CEDIA integrator needs. Setup was fast, results came before I expected, and I now have a system that runs without me."</p><div class="testi-author"><div class="testi-av">JB</div><div><div class="testi-name">James Bautista</div><div class="testi-role">Bautista Control Systems — Chicago, IL</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">Finally Predictable Revenue</div><p class="testi-quote">"I closed a $78,000 whole-home project from a lead the AI caught at 11pm on a Saturday. I was asleep. The system booked the consult, followed up, and all I did was show up to the call."</p><div class="testi-author"><div class="testi-av">RP</div><div><div class="testi-name">Rachel Patel</div><div class="testi-role">Clarity Smart Home — Atlanta, GA</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">200% Growth in 30 Days</div><p class="testi-quote">"I was skeptical because I'd tried other agencies. But Vincir is different — they fix the foundation first. Within 30 days my response time went from hours to seconds and my close rate jumped 35%."</p><div class="testi-author"><div class="testi-av">KN</div><div><div class="testi-name">Kevin Nguyen</div><div class="testi-role">Nextwave Smart Homes — Seattle, WA</div></div></div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="testi-card"><div class="testi-result-badge">3× Revenue in 60 Days</div><p class="testi-quote">"Before Vincir, I was missing 3–4 calls a day while on installs. Within 6 weeks the AI text-back alone booked 11 consultations I would have never gotten. Best investment in 8 years of business."</p><div class="testi-author"><div class="testi-av">MR</div><div><div class="testi-name">Marcus Rivera</div><div class="testi-role">Rivera Smart Home Solutions — Miami, FL</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">$180K Pipeline Month 1</div><p class="testi-quote">"The follow-up sequences are insane. Leads I thought were dead came back 2 weeks later. I went from feast-or-famine to a full calendar 3 months out. I didn't even need ads to get there."</p><div class="testi-author"><div class="testi-av">DK</div><div><div class="testi-name">David Kim</div><div class="testi-role">Precision AV Integrators — Austin, TX</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">40% Fewer No-Shows</div><p class="testi-quote">"The appointment reminders alone paid for the system. I used to lose 2–3 consults per week to no-shows. My Google reviews went from 14 to 67 in 4 months — completely on autopilot."</p><div class="testi-author"><div class="testi-av">SL</div><div><div class="testi-name">Sarah Lim</div><div class="testi-role">Luxe Home Tech — Los Angeles, CA</div></div></div></div>
+      <div class="testi-card"><div class="testi-result-badge">First $100K Month</div><p class="testi-quote">"I've been in smart home for 12 years and never hit six figures in a single month. The Growth System paid for itself 8× in month 2. The ads plus the follow-up system together is a completely different beast."</p><div class="testi-author"><div class="testi-av">TW</div><div><div class="testi-name">Tyler Walsh</div><div class="testi-role">Walsh Automation Group — Denver, CO</div></div></div></div>
+    </div>
+  </div>
+  <div class="section-inner">
+    <div class="results-row" style="margin-top:3rem">
+      <div class="result-block reveal"><div class="result-val up">+30%</div><div class="result-desc">Average increase in booked consultations</div></div>
+      <div class="result-block reveal reveal-delay-2"><div class="result-val down">−40%</div><div class="result-desc">Reduction in manual follow-up time</div></div>
+      <div class="result-block reveal reveal-delay-3"><div class="result-val fast">21×</div><div class="result-desc">Faster lead response time versus manual</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- WHY US -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Why Vincir Systems</div>
+    <h2 class="reveal reveal-delay-1">We Are Not Just a Software Installer<br><span class="grad">or a Traditional Ad Agency</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Vincir Systems is a marketing and revenue-infrastructure company that becomes the operational backbone of your home automation business.</p>
+    <div class="why-grid" style="margin-top:3rem">
+      <div class="why-card reveal reveal-delay-1">
+        <span class="why-icon">🏗️</span>
+        <h3>We Build & Manage Everything</h3>
+        <p>From your website and CRM to AI agents and ads — we build it, run it, and improve it every month so you can focus on delivering world-class smart home installations.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <span class="why-icon">🔒</span>
+        <h3>Hard to Replace, Easy to Love</h3>
+        <p>Your team relies on our system every day for bookings, follow-ups, and reporting. That deep integration means you get a true partner — not a vendor you swap out every quarter.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <span class="why-icon">📈</span>
+        <h3>Continuous Improvement</h3>
+        <p>We do not set it and forget it. Every month we review your data, optimize workflows, and layer new AI capabilities so your results keep growing quarter after quarter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- NICHES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Built for Your Niche</div>
+    <h2 class="reveal reveal-delay-1">Built for Home Automation<br><span class="grad">Businesses Like Yours</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Whether you specialize in full smart home integration, AV, security, or energy systems — Vincir makes sure every lead is captured and every opportunity is converted.</p>
+    <div class="niches-grid" style="margin-top:3rem">
+      <div class="niche-card reveal reveal-delay-1"><span class="niche-icon">🏠</span><div class="niche-name">Smart Home Integration</div></div>
+      <div class="niche-card reveal reveal-delay-1"><span class="niche-icon">🎬</span><div class="niche-name">Home Theater & AV</div></div>
+      <div class="niche-card reveal reveal-delay-2"><span class="niche-icon">🔒</span><div class="niche-name">Security & Access Control</div></div>
+      <div class="niche-card reveal reveal-delay-2"><span class="niche-icon">💡</span><div class="niche-name">Lighting Control</div></div>
+      <div class="niche-card reveal reveal-delay-3"><span class="niche-icon">🌡️</span><div class="niche-name">Climate & HVAC Automation</div></div>
+      <div class="niche-card reveal reveal-delay-3"><span class="niche-icon">🔊</span><div class="niche-name">Whole-Home Audio</div></div>
+      <div class="niche-card reveal reveal-delay-4"><span class="niche-icon">📷</span><div class="niche-name">Surveillance & CCTV</div></div>
+      <div class="niche-card reveal reveal-delay-4"><span class="niche-icon">⚡</span><div class="niche-name">Energy Management</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FAQ -->
+<section class="section alt" id="faq">
+  <div class="section-inner">
+    <div class="section-kicker reveal">FAQ</div>
+    <h2 class="reveal reveal-delay-1">Frequently Asked <span class="grad">Questions</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Everything you need to know about Vincir Systems</p>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">Do I need to change my current tools?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">No. We plug into what you already have or replace what is broken. Our system connects to most existing tools including websites, phone systems, and calendars. We handle all the technical setup so you don't have to lift a finger.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I don't have much inbound traffic yet?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">That is fine — and actually the right time to start. We optimize what you have first, then scale when you are ready. Most home automation businesses already get leads — they just are not capturing them properly. The Foundation System fixes that within days.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long until I see results?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Most clients see dramatically improved response times within 48 hours of system activation. Booking increases typically happen within 2 weeks as AI automation takes over follow-up. Ad results on the Growth System typically show traction within 30 days.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this built specifically for home automation businesses?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes — exclusively. Unlike generic marketing agencies, Vincir Systems is purpose-built for home automation and smart home integration businesses. Our CRM pipelines, follow-up scripts, and ad strategies are all designed around how homeowners actually buy in this industry.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What makes Vincir different from other agencies?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">We install AI systems FIRST, marketing SECOND. Most agencies just run ads and hope for the best. We fix your lead capture, response, and follow-up foundation first — so every lead and every dollar works harder before you spend anything on advertising.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I upgrade from Foundation to Growth or Authority later?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. 80% of Foundation clients upgrade within 90 days once the system starts working and they see results. Start with Foundation, see the proof, then scale. No pressure, no long-term contracts, no risk.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What does the AI Voice Agent actually do?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">The AI Voice Agent (included in Authority) answers your inbound calls 24/7, qualifies the prospect using a custom script built for home automation sales, and books them directly into your calendar — even at 2am on a Sunday. It sounds completely natural and is fully customized to your business name, services, and pricing.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <div class="section-kicker" style="text-align:center;margin-bottom:1rem">Next Step</div>
+      <h2>Don't Let Another <span class="grad">Lead Slip Away</span></h2>
+      <p class="cta-copy">Book your free Revenue Audit. We will show you exactly where you are leaking money — missed calls, cold leads, dead follow-ups — and how to fix it. No obligation. No fluff. Just a clear picture.</p>
+      <div class="cta-price-cards">
+        <div class="cta-price-card">
+          <div class="cta-price-tier">Foundation</div>
+          <div class="cta-price-amt">$297<span style="font-size:0.85rem;color:var(--muted2);font-weight:400">/mo</span></div>
+          <div class="cta-price-setup">$1,500 setup</div>
+        </div>
+        <div class="cta-price-card pop">
+          <div class="cta-price-tier">Growth ⭐</div>
+          <div class="cta-price-amt" style="color:var(--cyan)">$597<span style="font-size:0.85rem;color:var(--muted2);font-weight:400">/mo</span></div>
+          <div class="cta-price-setup">$3,000+ setup</div>
+        </div>
+        <div class="cta-price-card">
+          <div class="cta-price-tier">Authority</div>
+          <div class="cta-price-amt">$1,200<span style="font-size:0.85rem;color:var(--muted2);font-weight:400">/mo</span></div>
+          <div class="cta-price-setup">$7,500+ setup</div>
+        </div>
+      </div>
+      <a class="btn btn-primary" style="font-size:1rem;padding:1.1rem 2.5rem" href="https://cal.com/weffi/strategysession">📅 Book Your Free Revenue Audit</a>
+      <div class="cta-checkmarks">
+        <div class="cta-check">No credit card required</div>
+        <div class="cta-check">30-minute audit call</div>
+        <div class="cta-check">Zero obligation</div>
+        <div class="cta-check">Built for integrators</div>
+      </div>
+      <p class="cta-phone">Or call us directly: <a href="tel:+17868048606">+1 786-804-8606</a></p>
+      <p style="margin-top:1rem;font-size:0.8rem;color:var(--muted2)">Stop leaking revenue today. Start with Foundation — upgrade when you are ready.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">VINCIR <span>SYSTEMS</span></div>
+        <div class="footer-tagline">Efficient Systems. Predictable Profit.</div>
+        <p class="footer-desc">AI-powered revenue infrastructure built exclusively for home automation and smart home integration businesses. We help integrators capture every lead, follow up instantly, and build a predictable pipeline of high-ticket projects.</p>
+        <div class="footer-contact">
+          <a href="https://www.instagram.com/vincirsystems/" target="_blank" class="footer-contact-link"><div class="footer-contact-icon">📸</div>@vincirsystems</a>
+          <a href="mailto:vince@vincirsystems.com" class="footer-contact-link"><div class="footer-contact-icon">✉</div>vince@vincirsystems.com</a>
+          <a href="sms:+17868048606" class="footer-contact-link"><div class="footer-contact-icon">📱</div>+1 786-804-8606</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Systems</div>
+        <ul class="footer-links">
+          <li><a href="#pricing">Foundation System™</a></li>
+          <li><a href="#pricing">Growth System™</a></li>
+          <li><a href="#pricing">Authority System™</a></li>
+          <li><a href="#system">How It Works</a></li>
+          <li><a href="#cta">Book a Free Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="https://www.vincirsystems.com">Main Website</a></li>
+          <li><a href="#testimonials">Client Results</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://docs.google.com/document/d/1QgPy8pORiGG4RDXAVPzDVRGxNoAXJMrJUK4W1uAJvWs/edit?usp=sharing" target="_blank">Privacy Policy</a></li>
+          <li><a href="https://docs.google.com/document/d/1Lbp_MVRw8AWixtU7bctCjQZ0X4-2joMTe70rkBWN20Y/edit?usp=sharing" target="_blank">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Vincir Systems LLC. All rights reserved.<br>AI Revenue Infrastructure for Home Automation Businesses | Based in Florida, USA</div>
+      <div class="footer-legal">
+        <a href="https://docs.google.com/document/d/1QgPy8pORiGG4RDXAVPzDVRGxNoAXJMrJUK4W1uAJvWs/edit?usp=sharing" target="_blank">Privacy Policy</a>
+        <a href="https://docs.google.com/document/d/1Lbp_MVRw8AWixtU7bctCjQZ0X4-2joMTe70rkBWN20Y/edit?usp=sharing" target="_blank">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ===== COUNTER ANIMATION =====
+const countEls = document.querySelectorAll('[data-count]');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = true;
+      const target = parseInt(e.target.dataset.count);
+      const suffix = e.target.dataset.suffix || '%';
+      const prefix = e.target.dataset.prefix || '';
+      let start = 0;
+      const duration = 1800;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        e.target.textContent = prefix + current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else e.target.textContent = prefix + target + suffix;
+      };
+      requestAnimationFrame(step);
+    }
+  });
+}, { threshold: 0.5 });
+countEls.forEach(el => countObserver.observe(el));
+
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ===== ORBIT ICONS ANIMATION =====
+const orbitIcons = document.querySelectorAll('.orbit-icon');
+let angle = 0;
+const numIcons = orbitIcons.length;
+const radius = 140;
+function animateOrbit() {
+  angle += 0.004;
+  orbitIcons.forEach((icon, i) => {
+    const a = angle + (i * (Math.PI * 2 / numIcons));
+    const x = Math.cos(a) * radius;
+    const y = Math.sin(a) * radius;
+    icon.style.left = (50 + x / 3.2 * 100 / 160) + '%';
+    icon.style.top = (50 + y / 3.2 * 100 / 160) + '%';
+    icon.style.transform = 'translate(-50%, -50%)';
+  });
+  requestAnimationFrame(animateOrbit);
+}
+if (orbitIcons.length) animateOrbit();
+
+// ===== STICKY NAV SHADOW =====
+window.addEventListener('scroll', () => {
+  const topbar = document.querySelector('.topbar');
+  if (window.scrollY > 20) {
+    topbar.style.boxShadow = '0 4px 32px rgba(0,0,0,0.4)';
+  } else {
+    topbar.style.boxShadow = 'none';
+  }
+});
+</script>
+</body>
+</html>
