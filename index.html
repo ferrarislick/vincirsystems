@@ -47,7 +47,6 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 @keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(70,211,255,0.3)}50%{box-shadow:0 0 40px rgba(70,211,255,0.6),0 0 80px rgba(28,99,255,0.3)}}
 @keyframes orbit{0%{transform:rotate(0deg) translateX(120px) rotate(0deg)}100%{transform:rotate(360deg) translateX(120px) rotate(-360deg)}}
 @keyframes countUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes slideLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes borderGlow{0%,100%{border-color:var(--cyan-dim)}50%{border-color:rgba(70,211,255,0.5)}}
 @keyframes bgFloat{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
 
@@ -251,24 +250,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .price-row-tr td.col-pop-val{color:var(--cyan)}
 .compare-wrap{overflow-x:auto;border:1px solid var(--line-cyan);border-radius:var(--border-r);overflow:hidden}
 
-/* ===== TESTIMONIALS ===== */
-.testi-carousel-wrap{overflow:hidden;margin-top:3rem;position:relative}
-.testi-carousel-wrap::before,.testi-carousel-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
-.testi-carousel-wrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent)}
-.testi-carousel-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent)}
-.testi-track{display:inline-flex;gap:1.2rem;animation:slideLeft 40s linear infinite}
-.testi-track:hover{animation-play-state:paused}
-.testi-card{flex-shrink:0;width:340px;border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:1.8rem;transition:all 0.2s}
-.testi-card:hover{border-color:var(--cyan-dim);background:var(--panel2);transform:translateY(-4px)}
-.testi-result-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,230,118,0.08);border:1px solid rgba(0,230,118,0.2);color:var(--green);font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:1rem}
-.testi-result-badge::before{content:'↑';font-size:0.75rem}
-.testi-quote{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem;font-style:italic}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.8rem;color:#050b14;flex-shrink:0}
-.testi-name{font-size:0.875rem;font-weight:700;color:var(--text)}
-.testi-role{font-size:0.75rem;color:var(--muted2)}
-
-/* ===== RESULTS BAR ===== */
+/* ===== METRICS ===== */
 .results-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-cyan);border-radius:var(--border-r);overflow:hidden;margin-top:3rem}
 .result-block{background:linear-gradient(145deg,rgba(70,211,255,0.05),rgba(28,99,255,0.03));padding:2.5rem 2rem;text-align:center;transition:background 0.3s}
 .result-block:hover{background:linear-gradient(145deg,rgba(70,211,255,0.1),rgba(28,99,255,0.07))}
@@ -440,7 +422,6 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
           </div>
         </li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#testimonials">Results</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Get Free Revenue Audit</a></li>
       </ul>
@@ -774,31 +755,13 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
 
 <hr class="section-divider">
 
-<!-- TESTIMONIALS -->
-<section class="section" id="testimonials">
+<!-- METRICS -->
+<section class="section" id="metrics">
   <div class="section-inner">
-    <div class="section-kicker reveal">Real Systems. Real Results.</div>
-    <h2 class="reveal reveal-delay-1">Home Automation Businesses<br><span class="grad">Already Winning</span></h2>
-    <p class="section-copy reveal reveal-delay-2">See how Vincir Systems helps integrators capture every revenue opportunity — before it walks to a competitor.</p>
-  </div>
-  <div class="testi-carousel-wrap" style="margin-top:3rem">
-    <div class="testi-track">
-      <div class="testi-card"><div class="testi-result-badge">3× Revenue in 60 Days</div><p class="testi-quote">"Before Vincir, I was missing 3–4 calls a day while on installs. Within 6 weeks the AI text-back alone booked 11 consultations I would have never gotten. Best investment in 8 years of business."</p><div class="testi-author"><div class="testi-av">MR</div><div><div class="testi-name">Marcus Rivera</div><div class="testi-role">Rivera Smart Home Solutions — Miami, FL</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">$180K Pipeline Month 1</div><p class="testi-quote">"The follow-up sequences are insane. Leads I thought were dead came back 2 weeks later. I went from feast-or-famine to a full calendar 3 months out. I didn't even need ads to get there."</p><div class="testi-author"><div class="testi-av">DK</div><div><div class="testi-name">David Kim</div><div class="testi-role">Precision AV Integrators — Austin, TX</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">40% Fewer No-Shows</div><p class="testi-quote">"The appointment reminders alone paid for the system. I used to lose 2–3 consults per week to no-shows. My Google reviews went from 14 to 67 in 4 months — completely on autopilot."</p><div class="testi-author"><div class="testi-av">SL</div><div><div class="testi-name">Sarah Lim</div><div class="testi-role">Luxe Home Tech — Los Angeles, CA</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">First $100K Month</div><p class="testi-quote">"I've been in smart home for 12 years and never hit six figures in a single month. The Growth System paid for itself 8× in month 2. The ads plus the follow-up system together is a completely different beast."</p><div class="testi-author"><div class="testi-av">TW</div><div><div class="testi-name">Tyler Walsh</div><div class="testi-role">Walsh Automation Group — Denver, CO</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">Pipeline Up 250% in 6 Weeks</div><p class="testi-quote">"Vince and the team actually understand our industry. They knew exactly what a CEDIA integrator needs. Setup was fast, results came before I expected, and I now have a system that runs without me."</p><div class="testi-author"><div class="testi-av">JB</div><div><div class="testi-name">James Bautista</div><div class="testi-role">Bautista Control Systems — Chicago, IL</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">Finally Predictable Revenue</div><p class="testi-quote">"I closed a $78,000 whole-home project from a lead the AI caught at 11pm on a Saturday. I was asleep. The system booked the consult, followed up, and all I did was show up to the call."</p><div class="testi-author"><div class="testi-av">RP</div><div><div class="testi-name">Rachel Patel</div><div class="testi-role">Clarity Smart Home — Atlanta, GA</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">200% Growth in 30 Days</div><p class="testi-quote">"I was skeptical because I'd tried other agencies. But Vincir is different — they fix the foundation first. Within 30 days my response time went from hours to seconds and my close rate jumped 35%."</p><div class="testi-author"><div class="testi-av">KN</div><div><div class="testi-name">Kevin Nguyen</div><div class="testi-role">Nextwave Smart Homes — Seattle, WA</div></div></div></div>
-      <!-- Duplicate for seamless loop -->
-      <div class="testi-card"><div class="testi-result-badge">3× Revenue in 60 Days</div><p class="testi-quote">"Before Vincir, I was missing 3–4 calls a day while on installs. Within 6 weeks the AI text-back alone booked 11 consultations I would have never gotten. Best investment in 8 years of business."</p><div class="testi-author"><div class="testi-av">MR</div><div><div class="testi-name">Marcus Rivera</div><div class="testi-role">Rivera Smart Home Solutions — Miami, FL</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">$180K Pipeline Month 1</div><p class="testi-quote">"The follow-up sequences are insane. Leads I thought were dead came back 2 weeks later. I went from feast-or-famine to a full calendar 3 months out. I didn't even need ads to get there."</p><div class="testi-author"><div class="testi-av">DK</div><div><div class="testi-name">David Kim</div><div class="testi-role">Precision AV Integrators — Austin, TX</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">40% Fewer No-Shows</div><p class="testi-quote">"The appointment reminders alone paid for the system. I used to lose 2–3 consults per week to no-shows. My Google reviews went from 14 to 67 in 4 months — completely on autopilot."</p><div class="testi-author"><div class="testi-av">SL</div><div><div class="testi-name">Sarah Lim</div><div class="testi-role">Luxe Home Tech — Los Angeles, CA</div></div></div></div>
-      <div class="testi-card"><div class="testi-result-badge">First $100K Month</div><p class="testi-quote">"I've been in smart home for 12 years and never hit six figures in a single month. The Growth System paid for itself 8× in month 2. The ads plus the follow-up system together is a completely different beast."</p><div class="testi-author"><div class="testi-av">TW</div><div><div class="testi-name">Tyler Walsh</div><div class="testi-role">Walsh Automation Group — Denver, CO</div></div></div></div>
-    </div>
-  </div>
-  <div class="section-inner">
-    <div class="results-row" style="margin-top:3rem">
+    <div class="section-kicker reveal">Metrics</div>
+    <h2 class="reveal reveal-delay-1">Typical <span class="grad">Client Outcomes</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Directional benchmarks from integrators running the full response and follow-up stack — your mileage depends on market and volume.</p>
+    <div class="results-row" style="margin-top:2rem">
       <div class="result-block reveal"><div class="result-val up">+30%</div><div class="result-desc">Average increase in booked consultations</div></div>
       <div class="result-block reveal reveal-delay-2"><div class="result-val down">−40%</div><div class="result-desc">Reduction in manual follow-up time</div></div>
       <div class="result-block reveal reveal-delay-3"><div class="result-val fast">21×</div><div class="result-desc">Faster lead response time versus manual</div></div>
@@ -960,7 +923,6 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="https://www.vincirsystems.com">Main Website</a></li>
-          <li><a href="#testimonials">Client Results</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="https://docs.google.com/document/d/1QgPy8pORiGG4RDXAVPzDVRGxNoAXJMrJUK4W1uAJvWs/edit?usp=sharing" target="_blank">Privacy Policy</a></li>
           <li><a href="https://docs.google.com/document/d/1Lbp_MVRw8AWixtU7bctCjQZ0X4-2joMTe70rkBWN20Y/edit?usp=sharing" target="_blank">Terms & Conditions</a></li>
