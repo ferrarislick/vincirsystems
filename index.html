@@ -207,7 +207,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .system-list-text{font-size:0.9rem;color:var(--muted);line-height:1.5}
 .system-list-text strong{color:var(--text);display:block;margin-bottom:2px;font-size:0.95rem}
 
-/* ===== PRICING ===== */
+/* ===== SYSTEMS AND PACKAGES ===== */
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .price-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2.2rem;position:relative;overflow:hidden;transition:all 0.3s}
 .price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
@@ -318,6 +318,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .cta-price-card.pop .cta-price-tier{color:var(--cyan)}
 .cta-price-amt{font-size:1.8rem;font-weight:900;color:var(--text);line-height:1}
 .cta-price-setup{font-size:0.72rem;color:var(--muted2);margin-top:2px}
+.cta-price-tagline{font-size:0.8rem;color:var(--muted);line-height:1.35;margin-top:6px;font-weight:500}
 .cta-checkmarks{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
 .cta-check{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--muted2)}
 .cta-check::before{content:'✓';color:var(--cyan);font-weight:700}
@@ -663,18 +664,16 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
 
 <hr class="section-divider">
 
-<!-- PRICING -->
+<!-- SYSTEMS AND PACKAGES -->
 <section class="section alt" id="pricing">
   <div class="section-inner">
-    <div class="section-kicker reveal">Transparent Pricing</div>
+    <div class="section-kicker reveal">Systems And Packages</div>
     <h2 class="reveal reveal-delay-1">Choose Your <span class="grad">Growth Path</span></h2>
-    <p class="section-copy reveal reveal-delay-2">Every client starts with Foundation. Scale to Growth or Authority when you are ready. No long-term contracts. No hidden fees.</p>
+    <p class="section-copy reveal reveal-delay-2">Every client starts with Foundation. Scale to Growth or Authority when you are ready. No long-term contracts. Full scope and investment are covered on your free audit call.</p>
     <div class="pricing-grid">
       <div class="price-card reveal reveal-delay-1">
         <div class="price-tier">Start Here</div>
         <div class="price-name">Foundation System™</div>
-        <div class="price-setup">One-time setup: $2,500+</div>
-        <div class="price-amount"><span class="num">$2,000</span><span class="per">/mo</span></div>
         <div class="price-hr"></div>
         <ul class="price-list">
           <li>High-converting landing page or website</li>
@@ -695,8 +694,6 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
         <div class="popular-badge">⭐ Most Popular</div>
         <div class="price-tier">Scale Up</div>
         <div class="price-name">Growth System™</div>
-        <div class="price-setup">One-time setup: $3,000+</div>
-        <div class="price-amount"><span class="num">$2,500</span><span class="per">/mo</span></div>
         <div class="price-hr"></div>
         <ul class="price-list">
           <li>Everything in Foundation System™</li>
@@ -716,8 +713,6 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
       <div class="price-card reveal reveal-delay-3">
         <div class="price-tier">Full Dominance</div>
         <div class="price-name">Authority System™</div>
-        <div class="price-setup">One-time setup: $7,500+</div>
-        <div class="price-amount"><span class="num">$3,500</span><span class="per">/mo</span></div>
         <div class="price-hr"></div>
         <ul class="price-list">
           <li>Everything in Growth System™</li>
@@ -769,8 +764,6 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
             <tr><td>Reputation & Review Management</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
             <tr><td>Advanced AI Workflows</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
             <tr><td>Quarterly Business Reviews</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
-            <tr class="price-row-tr"><td>Setup Fee</td><td>$2,500+</td><td class="col-pop-val">$3,000+</td><td>$7,500+</td></tr>
-            <tr class="price-row-tr"><td>Monthly</td><td>$2,000/mo</td><td class="col-pop-val">$2,500/mo</td><td>$3,500/mo</td></tr>
           </tbody>
         </table>
       </div>
@@ -915,18 +908,15 @@ footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5
       <div class="cta-price-cards">
         <div class="cta-price-card">
           <div class="cta-price-tier">Foundation</div>
-          <div class="cta-price-amt">$2,000<span style="font-size:0.85rem;color:var(--muted2);font-weight:400">/mo</span></div>
-          <div class="cta-price-setup">$2,500+ setup</div>
+          <div class="cta-price-tagline">Core site, CRM, missed-call text-back, and follow-up automation.</div>
         </div>
         <div class="cta-price-card pop">
           <div class="cta-price-tier">Growth ⭐</div>
-          <div class="cta-price-amt" style="color:var(--cyan)">$2,500<span style="font-size:0.85rem;color:var(--muted2);font-weight:400">/mo</span></div>
-          <div class="cta-price-setup">$3,000+ setup</div>
+          <div class="cta-price-tagline">Everything in Foundation plus paid ads, CRO, and monthly growth planning.</div>
         </div>
         <div class="cta-price-card">
           <div class="cta-price-tier">Authority</div>
-          <div class="cta-price-amt">$3,500<span style="font-size:0.85rem;color:var(--muted2);font-weight:400">/mo</span></div>
-          <div class="cta-price-setup">$7,500+ setup</div>
+          <div class="cta-price-tagline">Full-funnel dominance: multi-platform ads, SEO, voice agent, and white-glove support.</div>
         </div>
       </div>
       <a class="btn btn-primary" style="font-size:1rem;padding:1.1rem 2.5rem" href="#" onclick="showExitPopup(); return false;">📅 Book Your Free Revenue Audit</a>
