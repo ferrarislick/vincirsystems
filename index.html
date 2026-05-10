@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vincir Systems | Intelligent Revenue Systems for Local Businesses</title>
+<meta name="description" content="AI-powered websites, marketing, and intelligent revenue systems that help local businesses capture leads, build their reputation, and grow predictably.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050b14;
+  --bg2:#07101c;
+  --panel:rgba(255,255,255,0.04);
+  --panel2:rgba(255,255,255,0.06);
+  --panel3:rgba(255,255,255,0.08);
+  --cyan:#46d3ff;
+  --blue:#1c63ff;
+  --cyan-dim:rgba(70,211,255,0.18);
+  --cyan-glow:rgba(70,211,255,0.08);
+  --blue-glow:rgba(28,99,255,0.15);
+  --text:#ffffff;
+  --muted:#b8c0cc;
+  --muted2:#7a8599;
+  --line:rgba(255,255,255,0.08);
+  --line-cyan:rgba(70,211,255,0.18);
+  --red:#ff4d4d;
+  --green:#00e676;
+  --border-r:24px;
+  --border-r-sm:16px;
+  --border-r-xs:12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--cyan-dim);border-radius:3px}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}88%{opacity:0.5;transform:scale(0.85)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-88%)}}
+@keyframes gradientShift{0%,100%{background-position:0% 88%}88%{background-position:100% 88%}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(70,211,255,0.3)}88%{box-shadow:0 0 40px rgba(70,211,255,0.6),0 0 80px rgba(28,99,255,0.3)}}
+@keyframes orbit{0%{transform:rotate(0deg) translateX(120px) rotate(0deg)}100%{transform:rotate(360deg) translateX(120px) rotate(-360deg)}}
+@keyframes countUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes borderGlow{0%,100%{border-color:var(--cyan-dim)}88%{border-color:rgba(70,211,255,0.5)}}
+@keyframes bgFloat{0%,100%{background-position:0% 0%}88%{background-position:100% 100%}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+.reveal-delay-5{transition-delay:0.5s}
+.reveal-delay-6{transition-delay:0.6s}
+
+/* ===== NAV ===== */
+.topbar{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--line-cyan);backdrop-filter:blur(20px);background:rgba(5,11,20,0.92);transition:all 0.3s}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px;gap:1rem}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;max-width:clamp(170px,24vw,300px);flex-shrink:1}
+.brand-logo{font-size:clamp(0.78rem,1.2vw,1rem);font-weight:900;letter-spacing:0.14em;color:var(--text);line-height:1.1;white-space:nowrap}
+.brand-logo span{color:var(--cyan)}
+.brand-sub{font-size:clamp(0.5rem,0.72vw,0.63rem);letter-spacing:0.17em;text-transform:uppercase;color:rgba(70,211,255,0.8);margin-top:2px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:88%;transform:translateX(-88%);background:rgba(7,16,28,0.98);border:1px solid var(--line-cyan);border-radius:var(--border-r-sm);padding:8px;min-width:260px;opacity:0;pointer-events:none;transition:all 0.2s;backdrop-filter:blur(20px)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all}
+.nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--muted);font-size:0.82rem;transition:all 0.15s}
+.nav-dropdown-item:hover{background:var(--panel2);color:var(--text)}
+.nav-dropdown-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.nav-dropdown-icon.f{background:rgba(70,211,255,0.1);border:1px solid var(--cyan-dim)}
+.nav-dropdown-icon.g{background:rgba(28,99,255,0.1);border:1px solid rgba(28,99,255,0.2)}
+.nav-dropdown-icon.a{background:rgba(138,43,226,0.1);border:1px solid rgba(138,43,226,0.2)}
+.nav-dropdown-text-main{font-weight:600;color:var(--text);font-size:0.82rem}
+.nav-dropdown-text-sub{font-size:0.7rem;color:var(--muted2)}
+.btn{display:inline-block;text-decoration:none;color:var(--text);font-weight:700;border-radius:20px;padding:0.85rem 1.4rem;transition:all 0.2s;font-size:0.85rem;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(90deg,var(--cyan),var(--blue));box-shadow:0 8px 24px rgba(70,211,255,0.2);animation:glowPulse 3s ease-in-out infinite}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(70,211,255,0.35)}
+.btn-ghost{color:var(--muted);border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03)}
+.btn-ghost:hover{background:rgba(255,255,255,0.07);color:var(--text)}
+.mobile-nav-cta{display:none;padding:0.62rem 1rem;font-size:0.75rem;letter-spacing:0.04em;white-space:nowrap}
+@media(max-width:900px){
+  .topbar-inner{height:64px}
+  .brand{max-width:clamp(150px,44vw,240px)}
+  .nav-links{display:none}
+  .mobile-nav-cta{display:inline-flex}
+}
+@media(max-width:768px){
+  .brand{max-width:220px}
+  .brand-logo{font-size:0.8rem;letter-spacing:0.12em}
+  .brand-sub{display:none}
+}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 15% 20%,rgba(0,163,255,0.18),transparent 97%),
+             radial-gradient(ellipse 60% 88% at 85% 10%,rgba(28,99,255,0.22),transparent 97%),
+             radial-gradient(ellipse 88% 60% at 88% 90%,rgba(70,211,255,0.08),transparent 88%),
+             linear-gradient(180deg,#061020 0%,var(--bg) 100%);
+  animation:bgFloat 12s ease-in-out infinite;
+  background-size:200% 200%}
+.hero-grid{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:5rem 5% 3rem;width:100%;display:grid;grid-template-columns:1.15fr 0.85fr;gap:4rem;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--cyan-dim);background:var(--cyan-glow);border-radius:999px;padding:0.45rem 0.9rem;font-size:0.72rem;font-weight:800;letter-spacing:0.24em;text-transform:uppercase;color:rgba(70,211,255,0.9);margin-bottom:1.2rem;animation:fadeUp 0.6s ease forwards}
+.hero-pill-dot{width:6px;height:6px;background:var(--cyan);border-radius:88%;animation:pulse 2s ease-in-out infinite}
+.hero h1{font-size:clamp(2.8rem,6vw,5.2rem);line-height:0.95;letter-spacing:-0.04em;font-weight:900;margin:0.8rem 0 0;animation:fadeUp 0.7s 0.1s ease forwards;opacity:0}
+.hero h1 .grad{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-lead{font-size:1.1rem;line-height:1.8;max-width:560px;color:var(--muted);margin:1.4rem 0 0;animation:fadeUp 0.7s 0.2s ease forwards;opacity:0}
+.hero-micro{color:rgba(70,211,255,0.9);margin-top:0.8rem;font-size:0.95rem;font-weight:500;animation:fadeUp 0.7s 0.3s ease forwards;opacity:0}
+.hero-micro span{color:var(--red)}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;animation:fadeUp 0.7s 0.4s ease forwards;opacity:0}
+
+/* Hero Card */
+.hero-card{background:var(--panel);border:1px solid var(--line-cyan);border-radius:var(--border-r);padding:1.2rem;box-shadow:0 32px 64px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.06);animation:fadeUp 0.8s 0.3s ease forwards;opacity:0}
+.hero-card-inner{background:#071120;border:1px solid var(--line);border-radius:20px;padding:1.4rem}
+.hc-eyebrow{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--muted2)}
+.hc-title{margin-top:0.6rem;font-size:1.5rem;font-weight:800;line-height:1.25;color:var(--text)}
+.hc-title span{color:var(--red)}
+.hc-stack{margin-top:1rem;display:grid;gap:0.6rem}
+.hc-item{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:0.85rem 1rem;color:var(--muted);font-size:0.88rem;display:flex;align-items:center;gap:10px;transition:all 0.2s}
+.hc-item:hover{border-color:var(--cyan-dim);background:var(--panel2);color:var(--text)}
+.hc-item-dot{width:8px;height:8px;border-radius:88%;flex-shrink:0}
+.hc-item-dot.red{background:var(--red)}
+.hc-item-dot.amber{background:#ffb800}
+.hc-item-dot.red2{background:#ff6b35}
+.hc-item-dot.red3{background:#e91e63}
+
+/* ===== TICKER ===== */
+.ticker-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line-cyan);border-bottom:1px solid var(--line-cyan);background:linear-gradient(90deg,rgba(70,211,255,0.03),rgba(28,99,255,0.05),rgba(70,211,255,0.03));padding:14px 0}
+.ticker-inner{display:inline-flex;gap:0;animation:ticker 35s linear infinite}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(70,211,255,0.75)}
+.ticker-item::after{content:'';width:4px;height:4px;background:var(--cyan-dim);border-radius:88%;margin-left:32px}
+
+/* ===== SHARED SECTION ===== */
+.section{padding:5rem 0}
+.section.alt{background:var(--bg2)}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 5%}
+.section-kicker{color:rgba(70,211,255,0.9);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.25em;font-weight:800;margin-bottom:0.75rem}
+.section h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-0.03em;font-weight:900;margin:0}
+.section h2 .grad{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-copy{margin-top:1rem;color:var(--muted);font-size:1rem;line-height:1.85;max-width:720px}
+.section-divider{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--line-cyan),transparent)}
+
+/* ===== STATS BAR ===== */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-cyan);border-radius:var(--border-r);overflow:hidden;margin-top:3rem}
+.stat-block{background:linear-gradient(145deg,rgba(70,211,255,0.06),rgba(28,99,255,0.04));padding:2.5rem 2rem;text-align:center;transition:background 0.3s}
+.stat-block:hover{background:linear-gradient(145deg,rgba(70,211,255,0.12),rgba(28,99,255,0.08))}
+.stat-val{color:var(--cyan);font-size:2.8rem;font-weight:900;letter-spacing:-0.03em;line-height:1}
+.stat-desc{margin-top:0.6rem;color:var(--muted);font-size:0.9rem;line-height:1.55}
+
+/* ===== PROBLEM CARDS ===== */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.problem-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.problem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#ff6b35)}
+.problem-card:hover{border-color:rgba(255,77,77,0.4);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.problem-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.problem-pct{font-size:2.5rem;font-weight:900;color:var(--red);line-height:1;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.problem-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text)}
+.problem-card p{color:var(--muted);font-size:0.9rem;line-height:1.7}
+.problem-cta{margin-top:3rem;text-align:center}
+.problem-cta p{color:var(--muted);font-size:1rem;margin-bottom:1.5rem}
+.problem-cta strong{color:var(--text)}
+
+/* ===== VS SECTION ===== */
+.vs-wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:2rem;align-items:center;max-width:900px;margin:3rem auto 0}
+.vs-card{border-radius:var(--border-r);padding:2.2rem}
+.vs-card.bad{background:rgba(255,77,77,0.04);border:1px solid rgba(255,77,77,0.15)}
+.vs-card.good{background:linear-gradient(145deg,rgba(70,211,255,0.08),rgba(28,99,255,0.06));border:1px solid var(--cyan-dim);animation:borderGlow 4s ease-in-out infinite}
+.vs-label{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;padding:0.45rem 1rem;border-radius:999px;margin-bottom:1.4rem}
+.vs-label.bad-lbl{background:rgba(255,77,77,0.1);color:var(--red);border:1px solid rgba(255,77,77,0.2)}
+.vs-label.good-lbl{background:var(--cyan-glow);color:var(--cyan);border:1px solid var(--cyan-dim)}
+.vs-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:1rem;font-size:0.92rem;color:var(--muted);line-height:1.5}
+.vs-icon{width:20px;height:20px;border-radius:88%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;font-weight:700}
+.bad .vs-icon{background:rgba(255,77,77,0.15);color:var(--red)}
+.good .vs-icon{background:rgba(70,211,255,0.1);color:var(--cyan)}
+.vs-mid{display:flex;align-items:center;justify-content:center}
+.vs-badge{width:54px;height:54px;background:var(--bg2);border:2px solid var(--cyan-dim);border-radius:88%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;letter-spacing:0.1em;color:var(--cyan)}
+
+/* ===== PRINCIPLES ===== */
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.principle{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2.2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.principle::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.principle:hover{border-color:var(--cyan-dim);transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,0.3)}
+.principle-step{color:rgba(70,211,255,0.7);font-size:0.7rem;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:0.8rem}
+.principle h3{font-size:2rem;font-weight:900;letter-spacing:-0.02em;color:var(--text);line-height:1.1;margin-bottom:0.6rem}
+.principle p{color:var(--muted);font-size:0.9rem;line-height:1.75}
+
+/* ===== SYSTEM DIAGRAM ===== */
+.system-wrap{margin-top:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.system-orbit{position:relative;width:320px;height:320px;margin:0 auto}
+.orbit-center{position:absolute;top:88%;left:88%;transform:translate(-88%,-88%);width:100px;height:100px;background:linear-gradient(135deg,rgba(70,211,255,0.15),rgba(28,99,255,0.15));border:2px solid var(--cyan-dim);border-radius:88%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(70,211,255,0.2)}
+.orbit-center-text{font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);text-align:center;line-height:1.3}
+.orbit-ring{position:absolute;top:88%;left:88%;width:280px;height:280px;border:1px dashed rgba(70,211,255,0.15);border-radius:88%;transform:translate(-88%,-88%)}
+.orbit-icon{position:absolute;width:46px;height:46px;background:rgba(7,16,28,0.95);border:1px solid var(--line-cyan);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;top:88%;left:88%;transform-origin:0 0;box-shadow:0 4px 16px rgba(0,0,0,0.4)}
+.system-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.system-list-item{display:flex;align-items:flex-start;gap:14px;padding:1.1rem 1.2rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--border-r-sm);transition:all 0.2s}
+.system-list-item:hover{border-color:var(--cyan-dim);background:var(--panel2)}
+.system-list-icon{width:36px;height:36px;background:var(--cyan-glow);border:1px solid var(--cyan-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.system-list-text{font-size:0.9rem;color:var(--muted);line-height:1.5}
+.system-list-text strong{color:var(--text);display:block;margin-bottom:2px;font-size:0.95rem}
+
+/* ===== SYSTEMS AND PACKAGES ===== */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.price-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2.2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.price-card:nth-child(1)::before{background:var(--muted2)}
+.price-card:nth-child(2)::before{background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.price-card:nth-child(3)::before{background:linear-gradient(90deg,var(--blue),#8b5cf6)}
+.price-card.popular{background:linear-gradient(145deg,rgba(70,211,255,0.08),rgba(28,99,255,0.06));border-color:var(--cyan-dim);animation:borderGlow 4s ease-in-out infinite}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 32px 64px rgba(0,0,0,0.4)}
+.popular-badge{position:absolute;top:1.4rem;right:1.4rem;background:linear-gradient(90deg,var(--cyan),var(--blue));color:#050b14;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.price-tier{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted2);margin-bottom:0.5rem}
+.price-name{font-size:1.6rem;font-weight:900;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem}
+.price-setup{font-size:0.8rem;color:var(--muted2);margin-bottom:0.4rem}
+.price-amount{display:flex;align-items:baseline;gap:4px;margin-bottom:1.5rem}
+.price-amount .num{font-size:3.2rem;font-weight:900;letter-spacing:-0.03em;color:var(--cyan);line-height:1}
+.price-amount .per{font-size:0.85rem;color:var(--muted2)}
+.price-hr{height:1px;background:var(--line);margin-bottom:1.5rem}
+.price-list{list-style:none;margin-bottom:2rem}
+.price-list li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.875rem;color:var(--muted);line-height:1.4}
+.price-list li:last-child{border-bottom:none}
+.price-list li::before{content:'✓';color:var(--cyan);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-list li.na{color:rgba(255,255,255,0.2)}
+.price-list li.na::before{content:'—';color:rgba(255,255,255,0.15)}
+.price-note{text-align:center;margin-top:2rem;font-size:0.85rem;color:var(--muted2);padding:1rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--border-r-sm)}
+.price-note strong{color:var(--cyan)}
+
+/* ===== COMPARE TABLE ===== */
+.compare-section{margin-top:4rem}
+.compare-title{font-size:0.75rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted2);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
+.compare-title::before,.compare-title::after{content:'';flex:1;height:1px;background:var(--line)}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th{padding:14px 20px;text-align:left;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted2);border-bottom:1px solid var(--line-cyan);background:rgba(70,211,255,0.02)}
+.compare-table th:not(:first-child){text-align:center}
+.compare-table th.col-pop{color:var(--cyan)}
+.compare-table td{padding:13px 20px;border-bottom:1px solid var(--line);font-size:0.875rem;color:var(--muted)}
+.compare-table td:not(:first-child){text-align:center}
+.compare-table tbody tr:hover td{background:rgba(255,255,255,0.02)}
+.compare-table tr:last-child td{border-bottom:none}
+.check{color:var(--cyan);font-weight:700;font-size:1rem}
+.dash{color:rgba(255,255,255,0.18)}
+.price-row-tr td{color:var(--text);font-weight:800;font-size:1rem;padding-top:18px}
+.price-row-tr td.col-pop-val{color:var(--cyan)}
+.compare-wrap{overflow-x:auto;border:1px solid var(--line-cyan);border-radius:var(--border-r);overflow:hidden}
+
+/* ===== METRICS ===== */
+.results-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-cyan);border-radius:var(--border-r);overflow:hidden;margin-top:3rem}
+.result-block{background:linear-gradient(145deg,rgba(70,211,255,0.05),rgba(28,99,255,0.03));padding:2.5rem 2rem;text-align:center;transition:background 0.3s}
+.result-block:hover{background:linear-gradient(145deg,rgba(70,211,255,0.1),rgba(28,99,255,0.07))}
+.result-val{font-size:3rem;font-weight:900;letter-spacing:-0.03em;line-height:1;margin-bottom:0.5rem}
+.result-val.up{color:var(--green)}
+.result-val.down{color:var(--cyan)}
+.result-val.fast{color:#a78bfa}
+.result-desc{font-size:0.875rem;color:var(--muted);line-height:1.5}
+
+/* ===== WHY US ===== */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.why-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r);padding:2rem;transition:all 0.3s}
+.why-card:hover{border-color:var(--cyan-dim);transform:translateY(-4px);background:var(--panel2)}
+.why-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.why-card h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.75rem}
+.why-card p{font-size:0.875rem;color:var(--muted);line-height:1.7}
+
+/* ===== NICHES ===== */
+.niches-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
+.niche-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r-sm);padding:1.4rem;text-align:center;transition:all 0.2s;cursor:default}
+.niche-card:hover{border-color:var(--cyan-dim);background:var(--panel2);transform:translateY(-2px)}
+.niche-icon{font-size:1.6rem;margin-bottom:0.6rem;display:block}
+.niche-name{font-size:0.82rem;font-weight:600;color:var(--muted)}
+
+/* ===== FAQ ===== */
+.faq-list{margin-top:3rem;display:flex;flex-direction:column;gap:0.75rem}
+.faq-item{border:1px solid var(--line);background:var(--panel);border-radius:var(--border-r-sm);overflow:hidden;transition:border-color 0.2s}
+.faq-item.open{border-color:var(--cyan-dim)}
+.faq-q{padding:1.3rem 1.5rem;font-size:1rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:color 0.2s}
+.faq-q:hover{color:var(--cyan)}
+.faq-chevron{width:28px;height:28px;border-radius:88%;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--cyan);transition:transform 0.3s,background 0.2s;flex-shrink:0}
+.faq-item.open .faq-chevron{transform:rotate(45deg);background:var(--cyan-glow)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease}
+.faq-a-inner{padding:0 1.5rem 1.3rem;font-size:0.9rem;color:var(--muted);line-height:1.8}
+.faq-item.open .faq-a{max-height:300px}
+
+/* ===== CTA ===== */
+.cta-section{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);padding:5rem 0}
+.cta-box{border:1px solid var(--line-cyan);background:var(--panel);border-radius:32px;padding:4rem 3rem;text-align:center;box-shadow:0 40px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05);position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-100px;left:88%;transform:translateX(-88%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(70,211,255,0.1),transparent 70%);pointer-events:none}
+.cta-box h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:1rem}
+.cta-copy{color:var(--muted);font-size:1rem;line-height:1.8;max-width:600px;margin:0 auto 2.5rem}
+.cta-price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;max-width:700px;margin-left:auto;margin-right:auto}
+.cta-price-card{border:1px solid var(--line);background:rgba(255,255,255,0.03);border-radius:16px;padding:1.4rem;text-align:left}
+.cta-price-card.pop{border-color:var(--cyan-dim);background:var(--cyan-glow)}
+.cta-price-tier{font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted2);margin-bottom:4px}
+.cta-price-card.pop .cta-price-tier{color:var(--cyan)}
+.cta-price-amt{font-size:1.8rem;font-weight:900;color:var(--text);line-height:1}
+.cta-price-setup{font-size:0.72rem;color:var(--muted2);margin-top:2px}
+.cta-price-tagline{font-size:0.8rem;color:var(--muted);line-height:1.35;margin-top:6px;font-weight:500}
+.cta-checkmarks{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+.cta-check{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--muted2)}
+.cta-check::before{content:'✓';color:var(--cyan);font-weight:700}
+.cta-phone{margin-top:1.5rem;font-size:0.9rem;color:var(--muted2)}
+.cta-phone a{color:var(--cyan);text-decoration:none;font-weight:700}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg);border-top:1px solid var(--line-cyan);padding:4rem 5% 2.5rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line)}
+.footer-brand-name{font-size:1.05rem;font-weight:900;letter-spacing:0.2em;color:var(--text);margin-bottom:4px}
+.footer-brand-name span{color:var(--cyan)}
+.footer-tagline{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(70,211,255,0.7);margin-bottom:1.2rem}
+.footer-desc{font-size:0.85rem;color:var(--muted2);line-height:1.75;margin-bottom:1.5rem}
+.footer-contact{display:flex;flex-direction:column;gap:10px}
+.footer-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted2);font-size:0.85rem;transition:color 0.2s}
+.footer-contact-link:hover{color:var(--text)}
+.footer-contact-icon{width:28px;height:28px;background:var(--panel2);border:1px solid var(--line);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0}
+.footer-col-title{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:0.875rem;color:var(--muted2);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:0.8rem;color:var(--muted2);line-height:1.6}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{font-size:0.8rem;color:var(--muted2);text-decoration:none;transition:color 0.2s}
+.footer-legal a:hover{color:var(--muted)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .hero-grid,.system-wrap{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .principles-grid,.problem-grid,.pricing-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .vs-wrap{grid-template-columns:1fr;gap:1rem}
+  .vs-mid{display:none}
+  .stats-row,.results-row{grid-template-columns:1fr 1fr}
+  .niches-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .principles-grid,.problem-grid,.pricing-grid,.why-grid,.stats-row,.results-row,.niches-grid,.cta-price-cards{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}
+}
+
+/* ===== EXIT INTENT POPUP ===== */
+.vs-exit-overlay{position:fixed;inset:0;background:rgba(5,11,20,0.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
+.vs-exit-overlay.show{display:flex}
+.vs-exit-card{width:min(560px,94vw);background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,0.55)}
+.vs-exit-head{background:linear-gradient(180deg,#07101c,#050b14);padding:18px 20px;color:#fff;position:relative}
+.vs-exit-title{font-weight:900;letter-spacing:-0.02em;font-size:1.15rem;line-height:1.3}
+.vs-exit-sub{margin-top:6px;color:rgba(255,255,255,0.82);font-size:0.92rem;line-height:1.55}
+.vs-exit-x{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.vs-exit-x:hover{background:rgba(255,255,255,0.12)}
+.vs-exit-body{padding:18px 20px 16px}
+.vs-form-grid{display:grid;gap:12px}
+.vs-field label{display:block;font-size:0.78rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#07101c;margin-bottom:6px}
+.vs-field input,.vs-field select{width:100%;border:1px solid rgba(7,16,28,0.18);border-radius:12px;padding:12px 12px;font-size:0.95rem;outline:none;transition:border-color 0.15s, box-shadow 0.15s}
+.vs-field input:focus,.vs-field select:focus{border-color:rgba(28,99,255,0.55);box-shadow:0 0 0 4px rgba(28,99,255,0.12)}
+.vs-phone-wrap{display:flex;gap:10px;align-items:stretch}
+.vs-flag{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid rgba(7,16,28,0.18);border-radius:12px;background:#f6f8fb;color:#07101c;font-weight:700}
+.vs-flag span{font-size:1.05rem}
+.vs-terms{display:flex;gap:10px;align-items:flex-start;margin-top:6px}
+.vs-terms input{margin-top:3px}
+.vs-terms label{font-size:0.86rem;line-height:1.5;color:#07101c}
+.vs-submit{margin-top:10px;display:flex;flex-direction:column;gap:10px}
+.vs-submit button{width:100%;border:none;border-radius:14px;padding:13px 14px;font-weight:900;font-size:1rem;cursor:pointer;background:linear-gradient(90deg,#00e676,#31c84f);color:#04140b;box-shadow:0 14px 30px rgba(0,230,118,0.22);transition:transform 0.15s, box-shadow 0.15s}
+.vs-submit button:hover{transform:translateY(-1px);box-shadow:0 18px 36px rgba(0,230,118,0.28)}
+.vs-nothanks{display:block;text-align:center;font-size:0.9rem;color:#1c63ff;text-decoration:none}
+.vs-nothanks:hover{text-decoration:underline}
+.vs-thanks{padding:22px 20px 20px;color:#07101c}
+.vs-thanks h3{font-size:1.25rem;letter-spacing:-0.02em;margin:0 0 8px;font-weight:900}
+.vs-thanks p{margin:0;color:rgba(7,16,28,0.78);line-height:1.65}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <div>
+        <div class="brand-logo">VINCIR <span>SYSTEMS</span></div>
+        <div class="brand-sub">Intelligent Revenue Systems</div>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#foundation">Foundation</a></li>
+        <li class="nav-dropdown">
+          <a href="#pricing">Systems ▾</a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-item" href="#pricing">
+              <div class="nav-dropdown-icon f">F</div>
+              <div><div class="nav-dropdown-text-main">Foundation System</div><div class="nav-dropdown-text-sub">Start here</div></div>
+            </a>
+            <a class="nav-dropdown-item" href="#pricing">
+              <div class="nav-dropdown-icon g">G</div>
+              <div><div class="nav-dropdown-text-main">Growth System</div><div class="nav-dropdown-text-sub">Most popular</div></div>
+            </a>
+            <a class="nav-dropdown-item" href="#pricing">
+              <div class="nav-dropdown-icon a">A</div>
+              <div><div class="nav-dropdown-text-main">Authority System</div><div class="nav-dropdown-text-sub">Full market dominance</div></div>
+            </a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#system">Solutions ▾</a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-item" href="#system">🤖 AI Lead Response Agent</a>
+            <a class="nav-dropdown-item" href="#system">📱 Missed Call Text-Back</a>
+            <a class="nav-dropdown-item" href="#system">⚡ Automated Follow-Up</a>
+            <a class="nav-dropdown-item" href="#system">📅 Smart Appointment Booking</a>
+            <a class="nav-dropdown-item" href="#system">📊 CRM & Sales Pipeline</a>
+            <a class="nav-dropdown-item" href="#system">⭐ Review Management</a>
+            <a class="nav-dropdown-item" href="#system">📈 Lead &amp; Conversion Dashboards</a>
+            <a class="nav-dropdown-item" href="#system">🎙️ AI Voice Agent</a>
+          </div>
+        </li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Get Free Strategy Session</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary mobile-nav-cta" href="#" onclick="showExitPopup(); return false;">Book Free Session</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-pill"><div class="hero-pill-dot"></div>Intelligent Revenue Systems for Local Businesses</div>
+      <h1>Stop Losing Customers to <span class="grad">Poor Systems</span></h1>
+      <p class="hero-lead">You are not losing customers because of your product or service. You are losing them because your website is not optimized for conversion, your online reputation is unmanaged, and your follow-up is not fine tuned. Vincir Systems installs smart, intelligent revenue systems into your business — so you capture every lead, win more reviews, and grow on autopilot.</p>
+      <p class="hero-micro">Every missed lead, unanswered review, and absent online presence is revenue walking straight to your competitor.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Get Started — Book a Free Strategy Session</a>
+        <a class="btn btn-ghost" href="#how-it-works">See How It Works ↓</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hc-eyebrow">Your Growth Gaps</div>
+          <div class="hc-title">Most businesses are invisible online — and hemorrhaging customers because of it.</div>
+          <div class="hc-stack">
+            <div class="hc-item"><div class="hc-item-dot red"></div>No website or an outdated one loses customers before they call</div>
+            <div class="hc-item"><div class="hc-item-dot amber"></div>Slow follow-up lets competitors steal customers who were ready to buy</div>
+            <div class="hc-item"><div class="hc-item-dot red2"></div>No review system means your reputation is being written without you</div>
+            <div class="hc-item"><div class="hc-item-dot red3"></div>No social presence means competitors dominate your local market</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item">💈 Barbershops & Salons</span>
+    <span class="ticker-item">🍽️ Restaurants & Cafés</span>
+    <span class="ticker-item">🔧 Service & Trades</span>
+    <span class="ticker-item">🏥 Health & Wellness</span>
+    <span class="ticker-item">🏋️ Gyms & Fitness Studios</span>
+    <span class="ticker-item">🧹 Home Services</span>
+    <span class="ticker-item">🚗 Auto & Detailing</span>
+    <span class="ticker-item">🐾 Pet Services</span>
+    <span class="ticker-item">🎨 Creative Businesses</span>
+    <span class="ticker-item">🏪 Retail & Boutiques</span>
+    <span class="ticker-item">💈 Barbershops & Salons</span>
+    <span class="ticker-item">🍽️ Restaurants & Cafés</span>
+    <span class="ticker-item">🔧 Service & Trades</span>
+    <span class="ticker-item">🏥 Health & Wellness</span>
+    <span class="ticker-item">🏋️ Gyms & Fitness Studios</span>
+    <span class="ticker-item">🧹 Home Services</span>
+    <span class="ticker-item">🚗 Auto & Detailing</span>
+    <span class="ticker-item">🐾 Pet Services</span>
+    <span class="ticker-item">🎨 Creative Businesses</span>
+    <span class="ticker-item">🏪 Retail & Boutiques</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section" id="stats">
+  <div class="section-inner">
+    <div class="stats-row reveal">
+      <div class="stat-block"><div class="stat-val" data-count="50">0</div><div class="stat-desc">Percent of consumers check a business online before visiting — is yours impressive?</div></div>
+      <div class="stat-block"><div class="stat-val" data-count="21" data-suffix="×">0</div><div class="stat-desc">More likely to choose a business with positive online reviews over one with none</div></div>
+      <div class="stat-block"><div class="stat-val" data-count="78" data-suffix="%">0</div><div class="stat-desc">Of customers trust online reviews as much as personal recommendations</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PROBLEM -->
+<section class="section alt" id="problem">
+  <div class="section-inner">
+    <div class="section-kicker reveal">The Real Problem</div>
+    <h2 class="reveal reveal-delay-1">You Don't Have a Sales Problem —<br>You Have a <span class="grad">Visibility &amp; Systems Problem</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Your website is outdated or nonexistent. Your Google reviews are ignored. Your social media is a ghost town. These gaps bleed customers and create unpredictable months — and every day your competition is building the presence you are not.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal reveal-delay-1">
+        <span class="problem-icon">🌐</span>
+        <div class="problem-pct">70%</div>
+        <h3>Businesses Without a Strong Website Lose Before Anyone Calls</h3>
+        <p>Of consumers say they won't engage a business with a poor or nonexistent website. You are being disqualified silently before the phone even rings.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <span class="problem-icon">⭐</span>
+        <div class="problem-pct">88%</div>
+        <h3>Ignored Reviews Kill Trust and Kill Revenue</h3>
+        <p>Of consumers read reviews before choosing a local business. Every unanswered review — positive or negative — is a signal that no one is minding the store.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <span class="problem-icon">📱</span>
+        <div class="problem-pct">97%</div>
+        <h3>No Social Presence = Invisible to Your Ideal Customers</h3>
+        <p>Of people search for local businesses online. Without active social media management and a consistent digital presence, you are invisible to the customers who are ready to buy right now.</p>
+      </div>
+    </div>
+    <div class="problem-cta reveal">
+      <p>Fix these gaps and watch inquiries, bookings, and reviews compound — without relying on word-of-mouth alone.</p>
+      <a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Show Me What I'm Missing</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- VS -->
+<section class="section" id="foundation">
+  <div class="section-inner">
+    <div class="section-kicker reveal">The Vincir Difference</div>
+    <h2 class="reveal reveal-delay-1">Our Solution: The Vincir <span class="grad">Intelligent Revenue System™</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Vincir Systems installs a complete intelligent revenue system into your business — combining a high-converting website, automated marketing, social media management, review generation, and online reputation protection. Here is how we do it, in the right order.</p>
+    <div class="vs-wrap">
+      <div class="vs-card bad reveal reveal-delay-1">
+        <div class="vs-label bad-lbl">🚰 Traditional Agencies</div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>Build you a generic site and disappear — no systems behind it</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>Run ads to a site that doesn't convert — burning your budget</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>Zero review strategy — your reputation writes itself badly</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>No social media plan — your accounts go dark within weeks</span></div>
+        <div class="vs-item"><div class="vs-icon">✗</div><span>No accountability — you get reports, not results</span></div>
+      </div>
+      <div class="vs-mid"><div class="vs-badge">VS</div></div>
+      <div class="vs-card good reveal reveal-delay-2">
+        <div class="vs-label good-lbl">🔒 Vincir AI Approach</div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Build the conversion foundation FIRST — website, reviews, reputation</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Then activate marketing and social once the system is ready</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Built for local service businesses that need real results</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>Automated review requests and responses running 24/7</span></div>
+        <div class="vs-item"><div class="vs-icon">✓</div><span>We become the growth infrastructure behind your business</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PRINCIPLES -->
+<section class="section alt" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-kicker reveal">How It Works</div>
+    <h2 class="reveal reveal-delay-1">Three Principles.<br><span class="grad">One Intelligent System.</span></h2>
+    <div class="principles-grid" style="margin-top:3rem">
+      <div class="principle reveal reveal-delay-1">
+        <div class="principle-step">Principle 01 — Foundation First</div>
+        <h3>Build the Digital Foundation</h3>
+        <p>We build or redesign your website, set up your Google Review Request system, and install AI follow-up automations — so every lead is captured and every customer is guided automatically.</p>
+      </div>
+      <div class="principle reveal reveal-delay-2">
+        <div class="principle-step">Principle 02 — Marketing &amp; Presence Second</div>
+        <h3>Amplify Your Visibility</h3>
+        <p>Once your conversion engine is locked in, we activate social media management, paid ads, and content creation to drive qualified customers to your business. Every dollar works harder because the foundation catches everything.</p>
+      </div>
+      <div class="principle reveal reveal-delay-3">
+        <div class="principle-step">Principle 03 — Protect &amp; Grow</div>
+        <h3>Layer Reputation & Scale</h3>
+        <p>As you scale, we layer online reputation management, Google profile optimization, advanced AI automations, and SEO. This sequence protects your brand and maximizes the lifetime value of every customer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SYSTEM DIAGRAM -->
+<section class="section" id="system">
+  <div class="section-inner">
+    <div class="section-kicker reveal">The Platform</div>
+    <h2 class="reveal reveal-delay-1">The Vincir Intelligent Revenue System™</h2>
+    <p class="section-copy reveal reveal-delay-2">Everything your business needs to attract, convert, and retain customers — websites, marketing, reputation, and social media managed in one intelligent system.</p>
+    <div class="system-wrap">
+      <div class="reveal">
+        <div class="system-orbit">
+          <div class="orbit-ring"></div>
+          <div class="orbit-center">
+            <div class="orbit-center-text">VINCIR<br>REVENUE<br>SYSTEM</div>
+          </div>
+          <div class="orbit-icon" style="transform:rotate(0deg) translateX(140px) rotate(0deg) translate(-88%,-88%)">🤖</div>
+          <div class="orbit-icon" style="transform:rotate(51deg) translateX(140px) rotate(-51deg) translate(-88%,-88%)">📱</div>
+          <div class="orbit-icon" style="transform:rotate(102deg) translateX(140px) rotate(-102deg) translate(-88%,-88%)">✉️</div>
+          <div class="orbit-icon" style="transform:rotate(153deg) translateX(140px) rotate(-153deg) translate(-88%,-88%)">📅</div>
+          <div class="orbit-icon" style="transform:rotate(204deg) translateX(140px) rotate(-204deg) translate(-88%,-88%)">🔔</div>
+          <div class="orbit-icon" style="transform:rotate(255deg) translateX(140px) rotate(-255deg) translate(-88%,-88%)">📊</div>
+          <div class="orbit-icon" style="transform:rotate(306deg) translateX(140px) rotate(-306deg) translate(-88%,-88%)">⭐</div>
+        </div>
+      </div>
+      <ul class="system-list reveal reveal-delay-2">
+        <li class="system-list-item">
+          <div class="system-list-icon">🤖</div>
+          <div class="system-list-text"><strong>Website Design &amp; Development</strong>High-converting, professionally designed websites that turn visitors into paying customers</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">📱</div>
+          <div class="system-list-text"><strong>Google Review Request System</strong>Automated review requests sent after every job — fill your Google profile with 5-star reviews on autopilot</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">✉️</div>
+          <div class="system-list-text"><strong>Online Reputation Management</strong>Monitor and respond to reviews across Google, Yelp, and Facebook — protect and build your brand 24/7</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">📅</div>
+          <div class="system-list-text"><strong>Social Media Management</strong>Consistent content, posting strategy, and engagement management to build your local following and authority</div>
+        </li>
+        <li class="system-list-item">
+          <div class="system-list-icon">📊</div>
+          <div class="system-list-text"><strong>Marketing & Paid Ads</strong>Strategic Facebook, Instagram, and Google advertising that drives qualified leads to your optimized website</div>
+        </li>
+      </ul>
+    </div>
+    <div style="text-align:center;margin-top:3rem" class="reveal">
+      <a class="btn btn-primary" href="#pricing">See the Packages →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SYSTEMS AND PACKAGES -->
+<section class="section alt" id="pricing">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Systems And Packages</div>
+    <h2 class="reveal reveal-delay-1">Choose Your <span class="grad">Growth Path</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Every client starts with Foundation. Scale to Growth or Authority when you are ready. No long-term contracts. Full scope and investment are covered on your free strategy call.</p>
+    <div class="pricing-grid">
+      <div class="price-card reveal reveal-delay-1">
+        <div class="price-tier">Start Here</div>
+        <div class="price-name">Foundation System™</div>
+        <div class="price-hr"></div>
+        <ul class="price-list">
+          <li>Custom high-converting website (5 pages)</li>
+          <li>Lead capture forms and call-to-action on every page</li>
+          <li>Google Review Request automation system</li>
+          <li>Missed-call instant AI text-back automation</li>
+          <li>Multi-channel follow-ups (SMS, email, voicemail)</li>
+          <li>Smart appointment booking and calendar routing</li>
+          <li>Automated appointment confirmations and reminders</li>
+          <li>Google Business Profile setup and optimization</li>
+          <li>Dedicated tracking phone number</li>
+          <li>Lead source and conversion reporting</li>
+          <li>10-day deployment and hands-on training</li>
+        </ul>
+        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#" onclick="showExitPopup(); return false;">Start with Foundation →</a>
+      </div>
+      <div class="price-card popular reveal reveal-delay-2">
+        <div class="popular-badge">⭐ Most Popular</div>
+        <div class="price-tier">Scale Up</div>
+        <div class="price-name">Growth System™</div>
+        <div class="price-hr"></div>
+        <ul class="price-list">
+          <li>Everything in Foundation System™</li>
+          <li>Social Media Management (2 platforms, 12 posts/month)</li>
+          <li>Meta Ads (Facebook & Instagram) management</li>
+          <li>Advanced funnel optimization and A/B testing</li>
+          <li>Short-form content creation (Reels and Stories)</li>
+          <li>Retargeting campaigns for warm audiences</li>
+          <li>Online review monitoring and response management</li>
+          <li>Weekly ad performance analysis and optimization</li>
+          <li>Monthly strategy and growth planning calls</li>
+          <li>Audience research and targeting refinement</li>
+          <li>Creative testing and ad copy optimization</li>
+        </ul>
+        <a class="btn btn-primary" style="width:100%;text-align:center;display:block" href="#" onclick="showExitPopup(); return false;">Scale with Growth →</a>
+      </div>
+      <div class="price-card reveal reveal-delay-3">
+        <div class="price-tier">Full Dominance</div>
+        <div class="price-name">Authority System™</div>
+        <div class="price-hr"></div>
+        <ul class="price-list">
+          <li>Everything in Growth System™</li>
+          <li>Multi-platform ads (Google, Meta, YouTube)</li>
+          <li>Full social media management across all platforms</li>
+          <li>Professional content creation (short and long form)</li>
+          <li>Full SEO optimization and local search domination</li>
+          <li>Google Business Profile and reputation monitoring</li>
+          <li>AI Voice Agent — 24/7 inbound call handling</li>
+          <li>Advanced review generation and reputation protection</li>
+          <li>Competitor analysis and market positioning</li>
+          <li>Brand development and messaging strategy</li>
+          <li>White-glove support with priority response</li>
+          <li>Quarterly business review and strategic planning</li>
+        </ul>
+        <a class="btn btn-ghost" style="width:100%;text-align:center;display:block" href="#" onclick="showExitPopup(); return false;">Dominate Your Market →</a>
+      </div>
+    </div>
+    <p class="price-note reveal">💡 <strong>80% of Foundation clients</strong> upgrade to Growth within 90 days once they see results. Start small, scale smart.</p>
+
+    <!-- COMPARE TABLE -->
+    <div class="compare-section reveal">
+      <div class="compare-title">Feature-by-Feature Comparison</div>
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Foundation</th>
+              <th class="col-pop">Growth ⭐</th>
+              <th>Authority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Website Design & Hosting</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>AI Lead Capture & Follow-Up</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Google Review Request System</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Missed-Call AI Text-Back</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Multi-Channel Follow-Ups (SMS/Email)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Appointment Booking & Reminders</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Lead &amp; Conversion Dashboards</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Social Media Management</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Funnel Optimization & A/B Testing</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Funnel Optimization &amp; A/B Testing</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Retargeting Campaigns</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Content Creation (Reels/Stories)</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>AI Voice Agent (24/7)</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Full SEO Optimization</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Reputation & Review Management</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Advanced AI Workflows</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Quarterly Business Reviews</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center;margin-top:1rem;font-size:0.8rem;color:var(--muted2)">ⓘ Every client starts with Foundation. Growth and Authority build on the previous tier.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- METRICS -->
+<section class="section" id="metrics">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Metrics</div>
+    <h2 class="reveal reveal-delay-1">Typical <span class="grad">Client Outcomes</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Directional benchmarks from local businesses running the full Vincir system — your results depend on market, volume, and starting point.</p>
+    <div class="results-row" style="margin-top:2rem">
+      <div class="result-block reveal"><div class="result-val up">+30%</div><div class="result-desc">Average increase in inbound inquiries and bookings</div></div>
+      <div class="result-block reveal reveal-delay-2"><div class="result-val down">−97%</div><div class="result-desc">Reduction in manual follow-up and admin work</div></div>
+      <div class="result-block reveal reveal-delay-3"><div class="result-val fast">21×</div><div class="result-desc">Faster lead response time compared to manual processes</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- WHY US -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Why Vincir Systems</div>
+    <h2 class="reveal reveal-delay-1">We Are Not Just a Web Designer<br><span class="grad">or a Traditional Marketing Agency</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Vincir Systems is a consulting and marketing partner that installs smart, intelligent revenue systems into local businesses — so you grow without depending entirely on referrals or word-of-mouth.</p>
+    <div class="why-grid" style="margin-top:3rem">
+      <div class="why-card reveal reveal-delay-1">
+        <span class="why-icon">🏗️</span>
+        <h3>We Build & Manage Everything</h3>
+        <p>From your website and Google review system to social media and paid ads — we build it, run it, and optimize it every month so you can focus on serving your customers.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <span class="why-icon">🔒</span>
+        <h3>Hard to Replace, Easy to Love</h3>
+        <p>Your team relies on our system every day for bookings, follow-ups, and reporting. That deep integration means you get a true partner — not a vendor you swap out every quarter.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <span class="why-icon">📈</span>
+        <h3>Continuous Improvement</h3>
+        <p>We do not set it and forget it. Every month we review your data, optimize workflows, and layer new AI capabilities so your results keep growing quarter after quarter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- NICHES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-kicker reveal">Built for Local Businesses</div>
+    <h2 class="reveal reveal-delay-1">Built for Local Service<br><span class="grad">Businesses Like Yours</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Whether you run a barbershop, salon, restaurant, trade business, or any local service — Vincir Systems installs the revenue infrastructure that keeps customers coming and competitors behind.</p>
+    <div class="niches-grid" style="margin-top:3rem">
+      <div class="niche-card reveal reveal-delay-1"><span class="niche-icon">💈</span><div class="niche-name">Barbershops &amp; Salons</div></div>
+      <div class="niche-card reveal reveal-delay-1"><span class="niche-icon">🍽️</span><div class="niche-name">Restaurants & Cafés</div></div>
+      <div class="niche-card reveal reveal-delay-2"><span class="niche-icon">🔧</span><div class="niche-name">Trades & Contractors</div></div>
+      <div class="niche-card reveal reveal-delay-2"><span class="niche-icon">🏥</span><div class="niche-name">Health &amp; Wellness</div></div>
+      <div class="niche-card reveal reveal-delay-3"><span class="niche-icon">🏋️</span><div class="niche-name">Gyms & Fitness Studios</div></div>
+      <div class="niche-card reveal reveal-delay-3"><span class="niche-icon">🧹</span><div class="niche-name">Home Services</div></div>
+      <div class="niche-card reveal reveal-delay-4"><span class="niche-icon">🚗</span><div class="niche-name">Auto & Detailing</div></div>
+      <div class="niche-card reveal reveal-delay-4"><span class="niche-icon">🏪</span><div class="niche-name">Retail &amp; Boutiques</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FAQ -->
+<section class="section alt" id="faq">
+  <div class="section-inner">
+    <div class="section-kicker reveal">FAQ</div>
+    <h2 class="reveal reveal-delay-1">Frequently Asked <span class="grad">Questions</span></h2>
+    <p class="section-copy reveal reveal-delay-2">Everything you need to know about working with Vincir Systems</p>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">Do I need to change my current tools?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">No. We plug into what you already have or replace what is broken. Our system connects to most existing tools. We handle all the technical setup so you don't have to lift a finger.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I don't have a website or social media yet?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">That is fine — and actually the perfect time to start. We build the foundation you need, then scale from there. Most local businesses already get some customers — they just are not capturing or leveraging them properly. The Foundation System fixes that within 10 days.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long until I see results?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Most clients see new reviews coming in within the first week. Inquiries from the new website typically pick up within 2 to 3 weeks. Social media and ad results on the Growth System typically show traction within 30 days.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you work with my type of business?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">We work with local service businesses of all types — barbershops, salons, restaurants, contractors, gyms, and more. Our systems and strategies are tailored to how local customers find, trust, and choose businesses in your category.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What makes Vincir different from other agencies?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">We install intelligent revenue systems FIRST, then marketing SECOND. Most agencies just run ads and hope for the best. We fix your website, review system, and follow-up foundation first — so every lead and every dollar works harder before you spend anything on advertising.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I upgrade from Foundation to Growth or Authority later?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. 80% of Foundation clients upgrade within 90 days once the system starts working and they see results. Start with Foundation, see the proof, then scale. No pressure, no long-term contracts, no risk.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What does the Google Review Request System actually do?<div class="faq-chevron">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Included in Foundation, the Review Request System automatically sends a personalized text or email to every customer after their visit or service — asking them to leave a Google review with one tap. It filters happy customers to public platforms and catches unhappy ones privately, protecting your reputation while flooding your profile with 5-star reviews.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <div class="section-kicker" style="text-align:center;margin-bottom:1rem">Next Step</div>
+      <h2>Ready to Install Your <span class="grad">Revenue System?</span></h2>
+      <p class="cta-copy">Book your free Strategy Session. We will audit your online presence, review your reputation gaps, and show you exactly which systems will move the needle fastest. No obligation. No fluff. Just a clear action plan.</p>
+      <div class="cta-price-cards">
+        <div class="cta-price-card">
+          <div class="cta-price-tier">Foundation</div>
+          <div class="cta-price-tagline">Custom website, review request system, missed-call text-back, and follow-up automation.</div>
+        </div>
+        <div class="cta-price-card pop">
+          <div class="cta-price-tier">Growth ⭐</div>
+          <div class="cta-price-tagline">Everything in Foundation plus social media management, paid ads, and monthly growth planning.</div>
+        </div>
+        <div class="cta-price-card">
+          <div class="cta-price-tier">Authority</div>
+          <div class="cta-price-tagline">Full-stack dominance: multi-platform ads, SEO, AI voice agent, reputation management, and white-glove support.</div>
+        </div>
+      </div>
+      <a class="btn btn-primary" style="font-size:1rem;padding:1.1rem 2.5rem" href="#" onclick="showExitPopup(); return false;">📅 Book Your Free Strategy Session</a>
+      <div class="cta-checkmarks">
+        <div class="cta-check">No credit card required</div>
+        <div class="cta-check">30-minute audit call</div>
+        <div class="cta-check">Zero obligation</div>
+        <div class="cta-check">Built for local businesses</div>
+      </div>
+      <p class="cta-phone">Or call us directly: <a href="tel:+17868048606">+1 786-804-8606</a></p>
+      <p style="margin-top:1rem;font-size:0.8rem;color:var(--muted2)">Stop losing customers today. Start with Foundation — upgrade when you are ready.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">VINCIR <span>SYSTEMS</span></div>
+        <div class="footer-tagline">Efficient Systems. Predictable Profit.</div>
+        <p class="footer-desc">Intelligent revenue systems for local businesses. We build websites, manage your reputation, run your social media, and install AI-powered marketing systems that turn your business into a lead-capturing, review-generating machine.</p>
+        <div class="footer-contact">
+          <a href="https://www.instagram.com/vincirsystems/" target="_blank" class="footer-contact-link"><div class="footer-contact-icon">📸</div>@vincirsystems</a>
+          <a href="mailto:vince@vincirsystems.com" class="footer-contact-link"><div class="footer-contact-icon">✉</div>vince@vincirsystems.com</a>
+          <a href="sms:+17868048606" class="footer-contact-link"><div class="footer-contact-icon">📱</div>+1 786-804-8606</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Systems</div>
+        <ul class="footer-links">
+          <li><a href="#pricing">Foundation System™</a></li>
+          <li><a href="#pricing">Growth System™</a></li>
+          <li><a href="#pricing">Authority System™</a></li>
+          <li><a href="#system">How It Works</a></li>
+        <li><a href="#" onclick="showExitPopup(); return false;">Book a Free Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="https://www.vincirsystems.com">Main Website</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://docs.google.com/document/d/1QgPy8pORiGG4RDXAVPzDVRGxNoAXJMrJUK4W1uAJvWs/edit?usp=sharing" target="_blank">Privacy Policy</a></li>
+          <li><a href="https://docs.google.com/document/d/1Lbp_MVRw8AWixtU7bctCjQZ0X4-2joMTe70rkBWN20Y/edit?usp=sharing" target="_blank">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Vincir Systems LLC. All rights reserved.<br>Intelligent Revenue Systems for Local Businesses | Based in Florida, USA</div>
+      <div class="footer-legal">
+        <a href="https://docs.google.com/document/d/1QgPy8pORiGG4RDXAVPzDVRGxNoAXJMrJUK4W1uAJvWs/edit?usp=sharing" target="_blank">Privacy Policy</a>
+        <a href="https://docs.google.com/document/d/1Lbp_MVRw8AWixtU7bctCjQZ0X4-2joMTe70rkBWN20Y/edit?usp=sharing" target="_blank">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- EXIT INTENT POPUP -->
+<div class="vs-exit-overlay" id="vsExitOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="vs-exit-card" role="document">
+    <div class="vs-exit-head">
+      <button class="vs-exit-x" type="button" aria-label="Close" onclick="hideExitPopup(); return false;">×</button>
+      <div class="vs-exit-title">Request Your Free Strategy Session</div>
+      <div class="vs-exit-sub">Find out exactly where your business is leaving money on the table — and how to fix it.</div>
+    </div>
+    <div class="vs-exit-body" id="vsExitBody">
+      <form id="vsExitForm">
+        <div class="vs-form-grid">
+          <div class="vs-field">
+            <label for="vsFullName">Full Name *</label>
+            <input id="vsFullName" name="fullName" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsPhone">Phone *</label>
+            <div class="vs-phone-wrap">
+              <div class="vs-flag" aria-hidden="true"><span>🇺🇸</span> +1</div>
+              <input id="vsPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(555) 123-4567" required>
+            </div>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsEmail">Email *</label>
+            <input id="vsEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsWebsite">Website URL *</label>
+            <input id="vsWebsite" name="websiteUrl" type="url" inputmode="url" placeholder="https://yourwebsite.com" required>
+          </div>
+
+          <div class="vs-field">
+            <label for="vsRevenue">Annual Revenue</label>
+            <select id="vsRevenue" name="annualRevenue">
+              <option value="" selected>Select one…</option>
+              <option>Under $100K</option>
+              <option>$100K–$250K</option>
+              <option>$250K–$500K</option>
+              <option>$500K–$1M</option>
+              <option>$1M–$3M</option>
+              <option>Over $3M</option>
+            </select>
+          </div>
+
+          <div class="vs-terms">
+            <input id="vsTerms" name="termsConsent" type="checkbox" required>
+            <label for="vsTerms">I agree to the terms &amp; conditions provided by Vincir Systems. I agree to receive text messages from this business.</label>
+          </div>
+
+          <div class="vs-submit">
+            <button type="submit">Request My Free Strategy Session →</button>
+            <a class="vs-nothanks" href="#" onclick="hideExitPopup(); return false;">No thanks, I'll keep losing customers on my own</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== EXIT INTENT POPUP =====
+const VS_APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL';
+const VS_SESSION_KEY = 'vs_exit_popup_autofired';
+
+function showExitPopup() {
+  const overlay = document.getElementById('vsExitOverlay');
+  if (!overlay) return;
+  overlay.classList.add('show');
+  overlay.setAttribute('aria-hidden', 'false');
+  const first = document.getElementById('vsFullName');
+  if (first) setTimeout(() => first.focus(), 50);
+}
+
+function hideExitPopup() {
+  const overlay = document.getElementById('vsExitOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('show');
+  overlay.setAttribute('aria-hidden', 'true');
+}
+
+(function initExitIntent() {
+  const overlay = document.getElementById('vsExitOverlay');
+  if (!overlay) return;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) hideExitPopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hideExitPopup();
+  });
+
+  // Desktop: exit intent (mouse leaves top of viewport)
+  const onMouseOut = (e) => {
+    if (sessionStorage.getItem(VS_SESSION_KEY)) return;
+    const from = e.relatedTarget || e.toElement;
+    if (from) return;
+    if (typeof e.clientY === 'number' && e.clientY <= 0) {
+      sessionStorage.setItem(VS_SESSION_KEY, '1');
+      showExitPopup();
+    }
+  };
+  document.addEventListener('mouseout', onMouseOut);
+
+  // Mobile: after 30 seconds
+  setTimeout(() => {
+    if (sessionStorage.getItem(VS_SESSION_KEY)) return;
+    sessionStorage.setItem(VS_SESSION_KEY, '1');
+    showExitPopup();
+  }, 30000);
+})();
+
+(function initExitForm() {
+  const form = document.getElementById('vsExitForm');
+  const body = document.getElementById('vsExitBody');
+  if (!form || !body) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const fd = new FormData(form);
+    // Force +1 prefix into phone value if user didn't include country code.
+    const rawPhone = String(fd.get('phone') || '').trim();
+    if (rawPhone && !rawPhone.startsWith('+')) fd.set('phone', '+1 ' + rawPhone);
+
+    try {
+      if (VS_APPS_SCRIPT_URL && VS_APPS_SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL') {
+        await fetch(VS_APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
+      }
+    } catch (_) {
+      // Intentionally swallow network errors; we still show a success screen.
+    }
+
+    body.innerHTML = '<div class="vs-thanks"><h3>Thanks — you’re all set.</h3><p>We received your info. We’ll text/email you the details shortly.</p></div>';
+    setTimeout(() => hideExitPopup(), 4000);
+  });
+})();
+
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ===== COUNTER ANIMATION =====
+const countEls = document.querySelectorAll('[data-count]');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = true;
+      const target = parseInt(e.target.dataset.count);
+      const suffix = e.target.dataset.suffix || '%';
+      const prefix = e.target.dataset.prefix || '';
+      let start = 0;
+      const duration = 1800;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        e.target.textContent = prefix + current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else e.target.textContent = prefix + target + suffix;
+      };
+      requestAnimationFrame(step);
+    }
+  });
+}, { threshold: 0.5 });
+countEls.forEach(el => countObserver.observe(el));
+
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ===== ORBIT ICONS ANIMATION =====
+const orbitIcons = document.querySelectorAll('.orbit-icon');
+let angle = 0;
+const numIcons = orbitIcons.length;
+const radius = 140;
+function animateOrbit() {
+  angle += 0.004;
+  orbitIcons.forEach((icon, i) => {
+    const a = angle + (i * (Math.PI * 2 / numIcons));
+    const x = Math.cos(a) * radius;
+    const y = Math.sin(a) * radius;
+    icon.style.left = (50 + x / 3.2 * 100 / 160) + '%';
+    icon.style.top = (50 + y / 3.2 * 100 / 160) + '%';
+    icon.style.transform = 'translate(-88%, -88%)';
+  });
+  requestAnimationFrame(animateOrbit);
+}
+if (orbitIcons.length) animateOrbit();
+
+// ===== STICKY NAV SHADOW =====
+window.addEventListener('scroll', () => {
+  const topbar = document.querySelector('.topbar');
+  if (window.scrollY > 20) {
+    topbar.style.boxShadow = '0 4px 32px rgba(0,0,0,0.4)';
+  } else {
+    topbar.style.boxShadow = 'none';
+  }
+});
+</script>
+</body>
+</html>
