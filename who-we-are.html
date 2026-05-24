@@ -120,6 +120,21 @@ footer{border-top:1px solid var(--line-cyan);padding:3rem 0 2rem;margin-top:0}
 .vs-thanks{padding:22px 20px 20px;color:#07101c}
 .vs-thanks h3{font-size:1.25rem;letter-spacing:-0.02em;margin:0 0 8px;font-weight:900}
 .vs-thanks p{margin:0;color:rgba(7,16,28,0.78);line-height:1.65}
+
+/* ===== MOBILE MENU ===== */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;cursor:pointer;border:1px solid rgba(255,255,255,0.15);border-radius:10px;background:rgba(255,255,255,0.03);padding:8px;flex-shrink:0}
+.hamburger span{display:block;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:rgba(5,11,20,0.98);border-bottom:1px solid var(--line-cyan);padding:1rem 5%;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;padding:0.9rem 0;border-bottom:1px solid var(--line);transition:color 0.2s}
+.mobile-menu a:last-child{border-bottom:none;padding-top:1rem;padding-bottom:0.5rem}
+.mobile-menu a:hover{color:var(--text)}
+.mobile-menu .btn-primary{color:var(--text);text-align:center;border-radius:14px;padding:0.85rem;margin-top:0.5rem;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+@media(max-width:900px){.hamburger{display:flex}.mobile-nav-cta{display:inline-flex!important;font-size:0.72rem;padding:0.55rem 0.85rem;white-space:nowrap}}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr!important;max-width:320px!important}}
 </style>
 </head>
 <body>
@@ -159,10 +174,38 @@ footer{border-top:1px solid var(--line-cyan);padding:3rem 0 2rem;margin-top:0}
   <div class="section-inner">
 
     <!-- FOUNDER STORY -->
-    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start" class="reveal">
+    <style>
+      .founder-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start}
+      .founder-heading{display:none}
+      .founder-photo-mobile{display:none}
+      .founder-cards-mobile{display:none}
+      @media(max-width:768px){
+        .founder-grid{grid-template-columns:1fr;gap:2rem}
+        .founder-right{display:none!important}
+        .founder-heading{display:block;margin-bottom:1.4rem}
+        .founder-heading-desktop{display:none}
+        .founder-photo-mobile{display:block;border-radius:20px;overflow:hidden;border:1px solid var(--line-cyan);background:var(--panel);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;margin-bottom:1.6rem}
+        .founder-cards-mobile{display:grid;gap:1rem;margin-top:2rem}
+      }
+    </style>
+    <div class="founder-grid reveal">
       <div>
-        <div class="kicker">The Founder</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-0.02em;line-height:1.05;margin-bottom:1.6rem">Hey, I'm Vince —<br><span style="background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Founder of Vincir Systems.</span></h2>
+
+        <!-- Desktop heading -->
+        <h2 class="founder-heading-desktop" style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-0.02em;line-height:1.05;margin-bottom:1.6rem">Hey, I'm Vince —<br><span style="background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Founder of Vincir Systems.</span></h2>
+
+        <!-- Mobile heading -->
+        <h2 class="founder-heading" style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-0.02em;line-height:1.05">Hey, I'm Vince —<br><span style="background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Founder of Vincir Systems.</span></h2>
+
+        <!-- Mobile photo placeholder -->
+        <div class="founder-photo-mobile">
+          <div style="text-align:center;color:var(--muted2);padding:2rem;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="font-size:3rem;margin-bottom:1rem">📸</div>
+            <div style="font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase">Add your photo here</div>
+            <div style="font-size:0.75rem;margin-top:6px;color:var(--muted2);opacity:0.6">Replace this block with an &lt;img&gt; tag</div>
+          </div>
+        </div>
+
 
         <p style="color:var(--muted);font-size:0.97rem;line-height:1.9;margin-bottom:1.1rem">I started out in the home improvement business. I had great clients, strong relationships, and work I was genuinely proud of. But I kept losing potential new customers to other companies that didn't provide better quality work and didn't provide better customer service.</p>
 
@@ -192,11 +235,18 @@ footer{border-top:1px solid var(--line-cyan);padding:3rem 0 2rem;margin-top:0}
 
         <p style="margin-top:2rem;font-size:1rem;font-weight:700;color:var(--text)">— Vince</p>
         <p style="font-size:0.82rem;color:var(--muted2);font-style:italic">Founder, Vincir Systems</p>
+
+        <!-- Mobile Mission/Vision cards -->
+        <div class="founder-cards-mobile">
+          <div class="card"><span class="card-icon">🎯</span><h3>Mission</h3><p>To build the operational backbone that lets business owners stop managing chaos and start building wealth.</p></div>
+          <div class="card"><span class="card-icon">👁️</span><h3>Vision</h3><p>A world where the best service providers win — not just the ones who got lucky with the phone.</p></div>
+        </div>
+
       </div>
 
-      <!-- PHOTO -->
-      <div style="display:flex;flex-direction:column;gap:1.2rem">
-        <div style="border-radius:20px;overflow:hidden;border:1px solid var(--line-cyan);background:var(--panel);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;min-height:420px">
+      <!-- PHOTO + CARDS (desktop only) -->
+      <div class="founder-right" style="display:flex;flex-direction:column;gap:1.2rem">
+        <div style="border-radius:20px;overflow:hidden;border:1px solid var(--line-cyan);background:var(--panel);height:420px;display:flex;align-items:center;justify-content:center">
           <div style="text-align:center;color:var(--muted2);padding:2rem">
             <div style="font-size:3rem;margin-bottom:1rem">📸</div>
             <div style="font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase">Add your photo here</div>
@@ -235,7 +285,7 @@ footer{border-top:1px solid var(--line-cyan);padding:3rem 0 2rem;margin-top:0}
     <div class="kicker reveal">The Team</div>
     <h2 class="reveal reveal-delay-1" style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-0.02em;margin-bottom:0.5rem">The People Behind <span style="background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">The Systems.</span></h2>
     <div style="margin-bottom:2.8rem"></div>
-    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1.2rem;max-width:960px;margin:0 auto" class="reveal reveal-delay-3">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1.2rem;max-width:960px;margin:0 auto" class="reveal reveal-delay-3 team-grid">
 
       <!-- Joao -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.6rem">
@@ -583,5 +633,22 @@ window.addEventListener('scroll', () => {
   }
 });
 </script>
+
+// ===== HAMBURGER MENU =====
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+}
+
 </body>
 </html>
