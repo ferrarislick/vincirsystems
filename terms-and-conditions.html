@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Terms & Conditions | Vincir Systems</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050b14;--bg2:#07101c;--panel:rgba(255,255,255,0.04);--panel2:rgba(255,255,255,0.06);
+  --cyan:#46d3ff;--blue:#1c63ff;--cyan-dim:rgba(70,211,255,0.18);--cyan-glow:rgba(70,211,255,0.08);
+  --text:#ffffff;--muted:#b8c0cc;--muted2:#7a8599;--line:rgba(255,255,255,0.08);
+  --line-cyan:rgba(70,211,255,0.18);--border-r:24px;--border-r-sm:16px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--cyan-dim);border-radius:3px}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(70,211,255,0.3)}50%{box-shadow:0 0 40px rgba(70,211,255,0.6),0 0 80px rgba(28,99,255,0.3)}}
+/* NAV */
+.topbar{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--line-cyan);backdrop-filter:blur(20px);background:rgba(5,11,20,0.92);transition:all 0.3s}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px;gap:1rem}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;max-width:clamp(170px,24vw,300px);flex-shrink:1}
+.brand-logo{font-size:clamp(0.78rem,1.2vw,1rem);font-weight:900;letter-spacing:0.14em;color:var(--text);line-height:1.1;white-space:nowrap}
+.brand-logo span{color:var(--cyan)}
+.brand-sub{font-size:clamp(0.5rem,0.72vw,0.63rem);letter-spacing:0.17em;text-transform:uppercase;color:rgba(70,211,255,0.8);margin-top:2px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-block;text-decoration:none;color:var(--text);font-weight:700;border-radius:20px;padding:0.85rem 1.4rem;transition:all 0.2s;font-size:0.85rem;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(90deg,var(--cyan),var(--blue));box-shadow:0 8px 24px rgba(70,211,255,0.2);animation:glowPulse 3s ease-in-out infinite}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(70,211,255,0.35)}
+.mobile-nav-cta{display:none;padding:0.62rem 1rem;font-size:0.75rem;letter-spacing:0.04em;white-space:nowrap}
+@media(max-width:900px){.topbar-inner{height:64px}.nav-links{display:none}.mobile-nav-cta{display:inline-flex}}
+@media(max-width:768px){.brand-logo{font-size:0.8rem;letter-spacing:0.12em}.brand-sub{display:none}}
+/* LEGAL CONTENT */
+.legal-wrap{max-width:800px;margin:0 auto;padding:5rem 5% 6rem}
+.legal-wrap h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:0.5rem}
+.legal-wrap .effective{color:var(--muted2);font-size:0.85rem;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--line-cyan)}
+.legal-wrap h2{font-size:1.1rem;font-weight:800;color:var(--text);margin:2.5rem 0 0.8rem;letter-spacing:0.02em}
+.legal-wrap p{color:var(--muted);font-size:0.92rem;line-height:1.85;margin-bottom:1rem}
+.legal-wrap ul{color:var(--muted);font-size:0.92rem;line-height:1.85;margin:0.5rem 0 1rem 1.4rem}
+.legal-wrap ul li{margin-bottom:0.4rem}
+.legal-wrap a{color:var(--cyan);text-decoration:none}
+.legal-wrap a:hover{text-decoration:underline}
+.legal-wrap .contact-block{background:var(--panel);border:1px solid var(--line-cyan);border-radius:16px;padding:1.5rem 1.8rem;margin-top:1rem}
+.legal-wrap .contact-block p{margin:0;line-height:2}
+/* FOOTER */
+footer{border-top:1px solid var(--line-cyan);padding:2rem 0;margin-top:0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{color:var(--muted2);font-size:0.78rem}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{color:var(--muted2);text-decoration:none;font-size:0.78rem;transition:color 0.2s}
+.footer-legal a:hover{color:var(--cyan)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-logo">VINCIR <span>SYSTEMS</span></div>
+        <div class="brand-sub">Efficient Systems. Predictable Profit.</div>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="who-we-are.html">Who We Are</a></li>
+        <li><a href="what-we-do.html">What We Do</a></li>
+        <li><a href="who-we-help.html">Who We Help</a></li>
+        <li><a href="how-to-work-with-us.html">How To Work With Us</a></li>
+        <li><a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Request Your Free Audit Call</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary mobile-nav-cta" href="#" onclick="showExitPopup(); return false;">Free Audit</a>
+  </div>
+</div>
+
+<div class="legal-wrap">
+  <h1>Terms &amp; Conditions</h1>
+  <p class="effective">Vincir Systems &nbsp;|&nbsp; Effective Date: 2026</p>
+
+  <h2>General</h2>
+  <p>This website (the "Site") is owned and operated by Vincir Systems ("Vincir Systems," "we," or "us"). By using the Site, you agree to be bound by these Terms and Conditions and to use the Site in accordance with these Terms, our Privacy Policy, and any additional terms that may apply to specific sections of the Site or to services available through the Site.</p>
+  <p>Accessing the Site in any manner, whether automated or otherwise, constitutes use of the Site and your agreement to be bound by these Terms. We reserve the right to change these Terms at any time by posting the revised version on this website. By continuing to use the Site after changes are posted, you accept the updated Terms.</p>
+
+  <h2>Intellectual Property Rights</h2>
+  <p><strong style="color:var(--text)">Our License to You</strong></p>
+  <p>This Site and all materials available on it are the property of Vincir Systems and/or its affiliates or licensors, protected by copyright, trademark, and other intellectual property laws. The Site is provided solely for your personal, non-commercial use. You may not use the Site or its materials in a manner that infringes our rights or has not been authorized by us.</p>
+  <p>Unless explicitly authorized in these Terms, you may not modify, copy, reproduce, republish, upload, post, transmit, translate, sell, create derivative works from, or distribute any material from the Site. You may download and/or print one copy of individual pages for personal, non-commercial use, provided all copyright and proprietary notices remain intact.</p>
+  <p><strong style="color:var(--text)">Your License to Us</strong></p>
+  <p>By submitting any material to us via the Site, social media, or email, you represent that: (i) you are the owner of the material or have the express consent of the owner; and (ii) you are at least thirteen (13) years of age.</p>
+  <p>When you submit material, you grant Vincir Systems a royalty-free, perpetual, irrevocable, non-exclusive, worldwide license to use, copy, modify, transmit, sell, distribute, and/or publicly display such material for any purpose. Vincir Systems has the right but not the obligation to use or display any submitted content and may remove it at any time for any reason.</p>
+
+  <h2>Services</h2>
+  <p>Vincir Systems provides business systems consulting, client acquisition, and marketing services to service-based businesses. Our services are provided on a retainer or performance-based model as agreed upon in a separate signed service agreement between Vincir Systems and the client.</p>
+  <p>The terms of service delivery, pricing, timelines, and performance expectations are governed by the individual service agreement signed at the time of onboarding. In the event of any conflict between these Terms and a signed service agreement, the service agreement shall take precedence.</p>
+
+  <h2>Refund Policy</h2>
+  <p>Vincir Systems offers refunds on service fees only — not on advertising spend or any third-party costs incurred on behalf of the client. Refund eligibility, amounts, and conditions are determined by the specific terms outlined in the signed service agreement at the time of client onboarding.</p>
+  <p>To request a refund, clients must submit a written request to the contact details provided below. All refund requests will be reviewed and processed in accordance with the terms of the applicable service agreement.</p>
+
+  <h2>Disclaimers</h2>
+  <p>THE INFORMATION, PRODUCTS, AND SERVICES OFFERED ON OR THROUGH THE SITE AND BY VINCIR SYSTEMS ARE PROVIDED "AS IS" AND WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE BY APPLICABLE LAW, WE DISCLAIM ALL WARRANTIES, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+  <p>WE DO NOT WARRANT THAT THE SITE OR ANY OF ITS FUNCTIONS WILL BE UNINTERRUPTED OR ERROR-FREE. VINCIR SYSTEMS IS NOT AN INVESTMENT ADVISORY SERVICE AND DOES NOT PROVIDE PERSONALIZED FINANCIAL ADVICE. OUR SERVICES EXIST FOR BUSINESS GROWTH PURPOSES ONLY, AND RESULTS MAY VARY. NO GUARANTEE OF SPECIFIC REVENUE, LEADS, OR BUSINESS OUTCOMES IS MADE OR IMPLIED.</p>
+  <p>You acknowledge and agree that no representation has been made by Vincir Systems or its affiliates regarding future income, revenue, or profitability that may result from participation in our programs or services.</p>
+
+  <h2>Limitation of Liability</h2>
+  <p>UNDER NO CIRCUMSTANCES SHALL VINCIR SYSTEMS, ITS AFFILIATES, OR AGENTS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM THE USE OF, OR THE INABILITY TO USE, THE SITE OR OUR SERVICES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+  <p>IF YOU ARE DISSATISFIED WITH THE SITE OR OUR SERVICES, YOUR SOLE AND EXCLUSIVE REMEDY IS TO DISCONTINUE USE OF THE SITE AND SERVICES.</p>
+
+  <h2>Online Commerce &amp; Third-Party Services</h2>
+  <p>Certain sections of the Site may reference or link to third-party services, tools, or platforms (such as scheduling software, payment processors, or CRM tools). Vincir Systems is not responsible for the accuracy, reliability, or practices of any third-party service. Your use of such services is governed by their respective terms and privacy policies.</p>
+  <p>You agree that Vincir Systems shall not be responsible or liable for any loss or damage incurred as a result of dealings with third-party services accessed through or referenced on our Site.</p>
+
+  <h2>Registration &amp; Account Security</h2>
+  <p>Certain features of the Site or our services may require you to register and provide personally identifiable information. You agree to provide accurate, current, and complete information. If we have reasonable grounds to suspect that your information is inaccurate or incomplete, we reserve the right to suspend or terminate your access.</p>
+  <p>You are responsible for maintaining the confidentiality of any account credentials and for all activities that occur under your account. Please notify us immediately of any unauthorized access or security breach.</p>
+
+  <h2>Acceptable Use</h2>
+  <p>By using this Site, you agree not to:</p>
+  <ul>
+    <li>Impersonate any person or entity or misrepresent your affiliation with any person or entity</li>
+    <li>Interfere with or disrupt any servers or networks used to provide the Site</li>
+    <li>Gain unauthorized access to the Site, any account, or any connected computer system</li>
+    <li>Post or transmit any unlawful, threatening, abusive, defamatory, obscene, or otherwise objectionable content</li>
+    <li>Use the Site to collect email addresses or personal information of other users for marketing purposes without consent</li>
+    <li>Use the Site for any fraudulent, speculative, or unauthorized commercial purposes</li>
+  </ul>
+
+  <h2>Termination</h2>
+  <p>We may cancel or terminate your right to use the Site or any part of it at any time without notice. Upon termination, you are no longer authorized to access the affected portions of the Site. All disclaimers and limitations of liability set forth in these Terms shall survive termination.</p>
+
+  <h2>Governing Law</h2>
+  <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of the State of Florida, United States. Any disputes arising under or in connection with these Terms shall be subject to binding arbitration in the State of Florida, in accordance with applicable arbitration rules.</p>
+  <p>If any provision of these Terms is found to be unlawful, void, or unenforceable, that provision shall be deemed severable and shall not affect the validity and enforceability of the remaining provisions.</p>
+
+  <h2>Copyright &amp; DMCA</h2>
+  <p>If you believe in good faith that materials on the Site infringe your copyright, please send a notice to us at the contact information below. All notices must comply with the requirements of the Digital Millennium Copyright Act (DMCA).</p>
+
+  <h2>Contact Us</h2>
+  <div class="contact-block">
+    <p>
+      <strong style="color:var(--text)">Vincir Systems</strong><br>
+      Email: <a href="mailto:contact@vincirsystems.com">contact@vincirsystems.com</a><br>
+      Website: <a href="https://vincirsystems.com">vincirsystems.com</a><br>
+      Location: Florida, United States
+    </p>
+  </div>
+
+  <p style="margin-top:2.5rem;font-size:0.82rem;color:var(--muted2)">© 2026 Vincir Systems. All Rights Reserved.</p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Vincir Systems LLC. All rights reserved. | Based in Florida, USA</div>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll', () => {
+  const t = document.querySelector('.topbar');
+  if (t) t.style.boxShadow = window.scrollY > 20 ? '0 4px 32px rgba(0,0,0,0.4)' : 'none';
+});
+function showExitPopup(){window.location.href='index.html';}
+</script>
+</body>
+</html>

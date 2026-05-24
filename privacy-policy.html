@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Privacy Policy | Vincir Systems</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050b14;--bg2:#07101c;--panel:rgba(255,255,255,0.04);--panel2:rgba(255,255,255,0.06);
+  --cyan:#46d3ff;--blue:#1c63ff;--cyan-dim:rgba(70,211,255,0.18);--cyan-glow:rgba(70,211,255,0.08);
+  --text:#ffffff;--muted:#b8c0cc;--muted2:#7a8599;--line:rgba(255,255,255,0.08);
+  --line-cyan:rgba(70,211,255,0.18);--border-r:24px;--border-r-sm:16px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--cyan-dim);border-radius:3px}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(70,211,255,0.3)}50%{box-shadow:0 0 40px rgba(70,211,255,0.6),0 0 80px rgba(28,99,255,0.3)}}
+/* NAV */
+.topbar{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--line-cyan);backdrop-filter:blur(20px);background:rgba(5,11,20,0.92);transition:all 0.3s}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px;gap:1rem}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;max-width:clamp(170px,24vw,300px);flex-shrink:1}
+.brand-logo{font-size:clamp(0.78rem,1.2vw,1rem);font-weight:900;letter-spacing:0.14em;color:var(--text);line-height:1.1;white-space:nowrap}
+.brand-logo span{color:var(--cyan)}
+.brand-sub{font-size:clamp(0.5rem,0.72vw,0.63rem);letter-spacing:0.17em;text-transform:uppercase;color:rgba(70,211,255,0.8);margin-top:2px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-block;text-decoration:none;color:var(--text);font-weight:700;border-radius:20px;padding:0.85rem 1.4rem;transition:all 0.2s;font-size:0.85rem;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(90deg,var(--cyan),var(--blue));box-shadow:0 8px 24px rgba(70,211,255,0.2);animation:glowPulse 3s ease-in-out infinite}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(70,211,255,0.35)}
+.mobile-nav-cta{display:none;padding:0.62rem 1rem;font-size:0.75rem;letter-spacing:0.04em;white-space:nowrap}
+@media(max-width:900px){.topbar-inner{height:64px}.nav-links{display:none}.mobile-nav-cta{display:inline-flex}}
+@media(max-width:768px){.brand-logo{font-size:0.8rem;letter-spacing:0.12em}.brand-sub{display:none}}
+/* LEGAL CONTENT */
+.legal-wrap{max-width:800px;margin:0 auto;padding:5rem 5% 6rem}
+.legal-wrap h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:0.5rem}
+.legal-wrap .effective{color:var(--muted2);font-size:0.85rem;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--line-cyan)}
+.legal-wrap h2{font-size:1.1rem;font-weight:800;color:var(--text);margin:2.5rem 0 0.8rem;letter-spacing:0.02em}
+.legal-wrap p{color:var(--muted);font-size:0.92rem;line-height:1.85;margin-bottom:1rem}
+.legal-wrap ul{color:var(--muted);font-size:0.92rem;line-height:1.85;margin:0.5rem 0 1rem 1.4rem}
+.legal-wrap ul li{margin-bottom:0.4rem}
+.legal-wrap a{color:var(--cyan);text-decoration:none}
+.legal-wrap a:hover{text-decoration:underline}
+.legal-wrap .contact-block{background:var(--panel);border:1px solid var(--line-cyan);border-radius:16px;padding:1.5rem 1.8rem;margin-top:1rem}
+.legal-wrap .contact-block p{margin:0;line-height:2}
+/* FOOTER */
+footer{border-top:1px solid var(--line-cyan);padding:2rem 0;margin-top:0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{color:var(--muted2);font-size:0.78rem}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{color:var(--muted2);text-decoration:none;font-size:0.78rem;transition:color 0.2s}
+.footer-legal a:hover{color:var(--cyan)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-logo">VINCIR <span>SYSTEMS</span></div>
+        <div class="brand-sub">Efficient Systems. Predictable Profit.</div>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="who-we-are.html">Who We Are</a></li>
+        <li><a href="what-we-do.html">What We Do</a></li>
+        <li><a href="who-we-help.html">Who We Help</a></li>
+        <li><a href="how-to-work-with-us.html">How To Work With Us</a></li>
+        <li><a class="btn btn-primary" href="#" onclick="showExitPopup(); return false;">Request Your Free Audit Call</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary mobile-nav-cta" href="#" onclick="showExitPopup(); return false;">Free Audit</a>
+  </div>
+</div>
+
+<div class="legal-wrap">
+  <h1>Privacy Policy</h1>
+  <p class="effective">Vincir Systems &nbsp;|&nbsp; Effective Date: 2026</p>
+
+  <h2>1. Important Information and Who We Are</h2>
+  <p>This Privacy Policy explains how Vincir Systems ("Vincir Systems," "we," "us," or "our") collects, uses, and protects your personal data when you use our website or engage with our services.</p>
+  <p>This website is not intended for children, and we do not knowingly collect data from individuals under the age of 13.</p>
+  <p><strong style="color:var(--text)">Controller:</strong> Vincir Systems is the data controller responsible for your personal data. If you have any questions about this Privacy Policy or wish to exercise your legal rights, please contact us using the details provided in Section 10.</p>
+
+  <h2>2. Types of Personal Data We Collect</h2>
+  <p>We may collect, use, store, and transfer the following categories of personal data:</p>
+  <ul>
+    <li><strong style="color:var(--text)">Identity Data:</strong> first name, last name, username or similar identifier</li>
+    <li><strong style="color:var(--text)">Contact Data:</strong> email address, phone number, billing address</li>
+    <li><strong style="color:var(--text)">Financial Data:</strong> payment card details and billing information (processed by secure third-party payment providers)</li>
+    <li><strong style="color:var(--text)">Transaction Data:</strong> details of services purchased and payments made</li>
+    <li><strong style="color:var(--text)">Technical Data:</strong> IP address, browser type and version, time zone, device information, and other technology data from your devices</li>
+    <li><strong style="color:var(--text)">Profile Data:</strong> your preferences, feedback, and service history</li>
+    <li><strong style="color:var(--text)">Usage Data:</strong> how you interact with and navigate our website</li>
+    <li><strong style="color:var(--text)">Marketing and Communications Data:</strong> your preferences for receiving marketing from us</li>
+  </ul>
+  <p>We also collect aggregated, non-personal data (such as general traffic statistics) to improve our website and services.</p>
+
+  <h2>3. How We Collect Your Personal Data</h2>
+  <p><strong style="color:var(--text)">Direct Interactions:</strong> You may provide us with personal data by filling in forms on our Site, booking a strategy call, or contacting us by email or phone. This includes data provided when you:</p>
+  <ul>
+    <li>Apply for or inquire about our services</li>
+    <li>Book a strategy session or discovery call</li>
+    <li>Subscribe to our communications</li>
+    <li>Provide feedback or contact us</li>
+  </ul>
+  <p><strong style="color:var(--text)">Automated Technologies:</strong> As you interact with our website, we may automatically collect Technical Data using cookies, server logs, and similar technologies. In the future, we may use tools such as Facebook Pixel and Google Analytics to collect data about your browsing behavior on our Site. We will update this policy and provide appropriate disclosures when such tools are activated.</p>
+  <p><strong style="color:var(--text)">Third Parties:</strong> We may receive personal data from third-party service providers including analytics providers such as Google and Meta, advertising networks, scheduling tools such as Cal.com, and payment processors used to handle transactions.</p>
+
+  <h2>4. How We Use Your Personal Data</h2>
+  <p><strong style="color:var(--text)">Legal Basis:</strong> We rely on one or more of the following legal bases for collecting and using your personal data:</p>
+  <ul>
+    <li>Performance of a Contract: to fulfill the services we have agreed to provide you</li>
+    <li>Legitimate Interests: to run our business, improve our services, and protect against fraud</li>
+    <li>Legal Obligation: to comply with applicable laws and regulations</li>
+    <li>Consent: where you have given us active agreement, such as subscribing to marketing emails</li>
+  </ul>
+  <p><strong style="color:var(--text)">Purposes:</strong> We use your personal data to register you as a new client, process payments, deliver agreed services, communicate with you, send relevant marketing communications where you have consented, improve our website and services, and comply with legal obligations.</p>
+  <p><strong style="color:var(--text)">Direct Marketing:</strong> You will receive marketing communications from us only if you have requested information or purchased services from us and have not opted out. You may opt out at any time by clicking the unsubscribe link in any of our emails or by contacting us directly.</p>
+
+  <h2>5. Disclosure of Your Personal Data</h2>
+  <p>We may share your personal data with the following third parties where necessary to provide our services:</p>
+  <ul>
+    <li>Meta (Facebook) and Google – for advertising and analytics</li>
+    <li>Cal.com – for scheduling strategy sessions</li>
+    <li>Payment processors – for handling billing and transactions</li>
+    <li>Email marketing platforms – for sending communications</li>
+    <li>Contractors and service providers who assist in delivering our services</li>
+  </ul>
+  <p>We require all third parties to respect the security of your personal data and to process it only in accordance with our instructions and applicable law.</p>
+
+  <h2>6. International Transfers</h2>
+  <p>Some of our third-party service providers are located outside the United States. By using our Site and services, you acknowledge that your data may be transferred to and processed in countries that may have different data protection standards. We take appropriate steps to ensure your data is protected in accordance with this Privacy Policy and applicable law.</p>
+
+  <h2>7. Data Security</h2>
+  <p>We have implemented appropriate technical and organizational measures to protect your personal data from unauthorized access, loss, alteration, or disclosure. Access to your personal data is limited to personnel who have a legitimate business need. We will notify you and any applicable regulators of a data breach where required by law.</p>
+
+  <h2>8. Data Retention</h2>
+  <p>We retain your personal data only for as long as necessary to fulfill the purposes for which it was collected, including to satisfy legal, regulatory, tax, accounting, or reporting requirements. In general, we retain basic client information for a minimum of six (6) years after the end of a client relationship, in accordance with applicable U.S. tax and business record requirements.</p>
+  <p>You may request deletion of your data at any time, subject to our legal obligations to retain certain records.</p>
+
+  <h2>9. Your Legal Rights</h2>
+  <p>Depending on your location and applicable law, you may have the following rights regarding your personal data:</p>
+  <ul>
+    <li>Right of Access: request a copy of the personal data we hold about you</li>
+    <li>Right to Correction: request correction of inaccurate or incomplete data</li>
+    <li>Right to Erasure: request deletion of your data in certain circumstances</li>
+    <li>Right to Object: object to our use of your data for direct marketing or other legitimate interest purposes</li>
+    <li>Right to Restrict Processing: request that we limit how we use your data</li>
+    <li>Right to Data Portability: request transfer of your data in a structured, machine-readable format</li>
+    <li>Right to Withdraw Consent: where processing is based on consent, you may withdraw it at any time</li>
+  </ul>
+  <p>To exercise any of these rights, please contact us using the details in Section 10. We will respond to all valid requests within 30 days.</p>
+
+  <h2>10. Contact Details</h2>
+  <div class="contact-block">
+    <p>
+      <strong style="color:var(--text)">Vincir Systems</strong><br>
+      Email: <a href="mailto:contact@vincirsystems.com">contact@vincirsystems.com</a><br>
+      Website: <a href="https://vincirsystems.com">vincirsystems.com</a><br>
+      Location: Florida, United States
+    </p>
+  </div>
+
+  <h2>11. Complaints</h2>
+  <p>If you are located in the European Union or United Kingdom and believe we have not adequately addressed your privacy concerns, you have the right to file a complaint with your local data protection authority. Within the United States, if you are a California resident, you may have additional rights under the California Consumer Privacy Act (CCPA). Please contact us first and we will make every effort to resolve your concern directly.</p>
+
+  <h2>12. Changes to This Privacy Policy</h2>
+  <p>We review and update this Privacy Policy periodically. Any changes will be posted on this page with an updated effective date. We encourage you to review this policy regularly. Your continued use of the Site after any updates constitutes acceptance of the revised policy.</p>
+
+  <h2>13. Third-Party Links</h2>
+  <p>Our Site may contain links to third-party websites, plug-ins, or applications. Clicking on those links may allow third parties to collect data about you. We do not control these third-party websites and are not responsible for their privacy practices. We encourage you to read the privacy policy of every website you visit.</p>
+
+  <h2>14. Cookies</h2>
+  <p>Our website may use cookies and similar tracking technologies to enhance your browsing experience and analyze Site traffic. You can manage your cookie preferences through your browser settings. For questions about our use of cookies, please contact us at the email address in Section 10.</p>
+
+  <p style="margin-top:2.5rem;font-size:0.82rem;color:var(--muted2)">© 2026 Vincir Systems. All Rights Reserved.</p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Vincir Systems LLC. All rights reserved. | Based in Florida, USA</div>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll', () => {
+  const t = document.querySelector('.topbar');
+  if (t) t.style.boxShadow = window.scrollY > 20 ? '0 4px 32px rgba(0,0,0,0.4)' : 'none';
+});
+function showExitPopup(){window.location.href='index.html';}
+</script>
+</body>
+</html>
